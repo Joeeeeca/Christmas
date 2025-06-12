@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="snow-container"></div>
+    <section id="hero">
+        <h1 class="hero-heading">Experience the Magic of Christmas Lights!</h1>
+        <h2 class="hero-subheading">Support a great cause and enjoy our beautiful holiday display.</h2>
+          <button class="donate-btn">Donate Now</button>
+
+    </section>
+
+    <section id="about" class="about-section">
+  <div class="about-container">
+    <div class="about-text">
+      <h2>Our Story</h2>
+      <p>
+        What started as a few strings of lights has become a beloved annual tradition. Each year, our family decorates our home with thousands of Christmas lights to bring joy to the community and raise funds for a cause close to our hearts. Thanks to your support, we've raised thousands for charity — and we're just getting started!
+      </p>
+    </div>
+    <div class="about-photo">
+      <img src="assets/about-image.jpg" alt="Family Christmas Lights Display">
+    </div>
+  </div>
+</section>
+
+<section id="location" class="location-section">
+
+  
+  <div class="location-content">
+      <h2>Visit Us</h2>
+    <div class="map-container">
+      <!-- Google Maps Embed -->
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d750.4781702311848!2d-1.311534762014567!3d50.751515026583874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48747ca6f74e9673%3A0xbb6d2ce0440d27c7!2sHighfield%20Rd%2C%20Cowes!5e0!3m2!1sen!2suk!4v1749480416831!5m2!1sen!2suk"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="location-info">
+     <h3>Address</h3>
+<address>
+ Highfield Road<br>
+  Cowes<br>
+  United Kingdom
+</address>
+
+      <h3>Opening Times</h3>
+      <p>Monday - Friday: 9am - 6pm<br>Saturday: 10am - 4pm<br>Sunday: Closed</p>
+    
+    </div>
+  </div>
+</section>
+
+<section id="donation" class="donation-section">
+  <div class="donation-container">
+    <h2>Support Our Cause</h2>
+
+    <div class="donation-counter">
+      <p>Amount Raised So Far:</p>
+      <span id="donation-amount">£0.00</span>
+    </div>
+
+    <button class="donate-btn2" onclick="window.open('https://your-donation-link.com', '_blank')">
+      Donate Now
+    </button>
+  </div>
+</section>
+
+
+
+    <div class="gallery-thumbnails">
+      <img src="assets/thumbnail1.jpg" alt="Christmas display 1" class="thumbnail">
+      <img src="assets/thumbnail2.jpg" alt="Christmas display 2" class="thumbnail">
+      <img src="assets/thumbnail3.jpg" alt="Christmas display 3" class="thumbnail">
+      <img src="assets/thumbnail4.jpg" alt="Christmas display 4" class="thumbnail">
+    </div>
+
+  <!-- Lightbox Viewer -->
+  <div id="lightbox" class="lightbox hidden">
+    <span class="close-btn">&times;</span>
+    <img class="lightbox-img" src="" alt="Expanded view">
+    <div class="lightbox-nav">
+      <span class="prev">&#10094;</span>
+      <span class="next">&#10095;</span>
+    </div>
+  </div>
+
+
+
+
+    
+</body>
+
+
+<script src="snow.js"></script>
+<script src="gallery.js"></script>
+
+
+
+</html>
