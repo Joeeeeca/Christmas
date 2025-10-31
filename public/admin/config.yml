@@ -1,10 +1,12 @@
 backend:
   name: github
-  repo: Joeeeeca/highfield-road-christmas-lights  # 👈 your GitHub repo
-  branch: main                                    # or "master" if that's your default branch
+  repo: Joeeeeca/highfield-road-christmas-lights
+  branch: main
   open_authoring: true
   base_url: https://decapcms-oauth.vercel.app
   auth_endpoint: /auth
+
+publish_mode: editorial_workflow  # 👈 REQUIRED when open_authoring is true
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
