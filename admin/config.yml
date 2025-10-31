@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: Joeeeeca/highfield-road-christmas-lights   # 👈 replace with your GitHub repo, e.g. "tom-highfield/xmas-lights"
-  branch: main                        # or "master" if that’s your default branch
+  repo: Joeeeeca/highfield-road-christmas-lights  # 👈 your GitHub repo
+  branch: main                                    # or "master" if that's your default branch
   open_authoring: true
   base_url: https://decapcms-oauth.vercel.app
   auth_endpoint: /auth
