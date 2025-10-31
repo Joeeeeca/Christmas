@@ -1,20 +1,26 @@
 backend:
   name: github
-  repo: Joeeeeca/highfield-road-christmas-lights
-  branch: gh-pages
-  base_url: https://decap-cms-oauth.vercel.app
+  repo: Joeeeeca/highfield-road-christmas-lights   # 👈 replace with your GitHub repo, e.g. "tom-highfield/xmas-lights"
+  branch: main                        # or "master" if that’s your default branch
+    open_authoring: true
+  base_url: https://decapcms-oauth.vercel.app
+  auth_endpoint: /auth
 
-media_folder: "dist/images/uploads"  # where images are stored in your built site
-public_folder: "/images/uploads"     # how those images are referenced in the site
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 collections:
   - name: "content"
     label: "Site Content"
     files:
-      - label: "About Section"
-        name: "about"
-        file: "src/content/about.json"
+      - name: "hero"
+        label: "Hero Section"
+        file: "src/content/hero.json"
         fields:
-          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
           - { label: "Text", name: "text", widget: "text" }
-          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Background Image", name: "backgroundImage", widget: "image" }
+          - { label: "Button 1 Text", name: "button1Text", widget: "string" }
+          - { label: "Button 1 Link", name: "button1Link", widget: "string" }
+          - { label: "Button 2 Text", name: "button2Text", widget: "string" }
+          - { label: "Button 2 Link", name: "button2Link", widget: "string" }

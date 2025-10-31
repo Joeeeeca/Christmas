@@ -1,0 +1,9 @@
+{
+  "title": "Photo Gallery",
+  "subtitle": "Take a peek at our festive display!",
+  "images": [
+    { "src": "/images/about-image.jpg", "alt": "Christmas lights display - front view" },
+    { "src": "/images/donation-amount.jpg", "alt": "Colorful yard decorations" },
+    { "src": "/images/thumbnail1.jpg", "alt": "Rooftop light display" }
+  ]
+}

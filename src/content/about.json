@@ -1,5 +1,20 @@
 {
-  "heading": "Welcome to Highfield Road Christmas Lights!",
-  "text": "We’re a family-run Christmas light display on the Isle of Wight raising funds for local charities.",
-  "image": "/images/website-logo.jpg"
+  "title": "About Our Display",
+  "sections": [
+    {
+      "icon": "star",
+      "heading": "Our Story",
+      "text": "Our Christmas light display combines a love of Christmas with a desire to make people smile..."
+    },
+    {
+      "icon": "gift",
+      "heading": "Why We Do This",
+      "text": "In 2023, he invited visitors to make charity donations..."
+    },
+    {
+      "icon": "sparkles",
+      "heading": "The Display",
+      "text": "Each year, Thomas has built up the display to be bigger and better..."
+    }
+  ]
 }
