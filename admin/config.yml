@@ -1,10 +1,8 @@
 backend:
   name: github
-  repo: Joeeeeca/Christmas   # ✅ Correct format
+  repo: "Joeeeeca/Christmas"
   branch: main
-  base_url: https://api.github.com
-  auth_scope: repo
-  open_authoring: true
+  publish_mode: editorial_workflow
 
 media_folder: "public/images"
 public_folder: "/images"
@@ -38,36 +36,3 @@ collections:
               - { label: "Icon", name: "icon", widget: "select", options: ["star", "gift", "sparkles"] }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
-
-      - file: "src/content/gallery.json"
-        label: "Gallery Section"
-        name: "gallery"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - label: "Images"
-            name: "images"
-            widget: "list"
-            summary: "{{fields.alt}}"
-            fields:
-              - { label: "Image", name: "src", widget: "image" }
-              - { label: "Alt Text", name: "alt", widget: "string" }
-
-      - file: "src/content/visit.json"
-        label: "Visit Section"
-        name: "visit"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Visiting Hours Image", name: "visitingHoursImage", widget: "image" }
-          - { label: "Map Embed URL", name: "mapEmbedUrl", widget: "text" }
-          - { label: "Fallback Image", name: "fallbackImage", widget: "image" }
-
-      - file: "src/content/donation.json"
-        label: "Donation & Social Section"
-        name: "donation"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Donation Title", name: "donationTitle", widget: "string" }
-          - { label: "Donation Text", name: "donationText", widget: "text" }
-          - { label: "Donation URL", name: "donationUrl", widget: "string" }
-          - { label: "Facebook URL", name: "facebookUrl", widget: "string" }
