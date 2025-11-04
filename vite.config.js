@@ -4,11 +4,35 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  base: './', // ✅ MUST end with a trailing slash
+  base: './',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        admin: path.resolve(__dirname, 'public/admin/index.html'),
+      },
+    },
+  },
+
+  server: {
+    watch: {
+      ignored: ['**/public/admin/**'],
+    },
+    // 👇 this tells Vite to serve /public/admin files as plain static assets
+    middlewareMode: false,
+    fs: {
+      allow: ['public'],
+    },
+  },
+
+  optimizeDeps: {
+    exclude: ['decap-cms-app'], // 👈 prevent Vite from touching this script
   },
 })
