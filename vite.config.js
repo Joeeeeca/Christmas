@@ -13,26 +13,28 @@ export default defineConfig({
   },
 
   build: {
+    copyPublicDir: true, // ✅ ensure /public/admin is copied to dist/admin
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index.html'),
-        admin: path.resolve(__dirname, 'public/admin/index.html'),
+        main: 'index.html', // ✅ relative path
       },
     },
   },
 
-  server: {
-    watch: {
-      ignored: ['**/public/admin/**'],
-    },
-    // 👇 this tells Vite to serve /public/admin files as plain static assets
-    middlewareMode: false,
-    fs: {
-      allow: ['public'],
-    },
+server: {
+  fs: {
+    allow: [__dirname, path.resolve(__dirname, 'public')],
   },
+  // 👇 this stops React's history fallback for /admin
+  middlewareMode: false,
+  historyApiFallback: {
+    rewrites: [
+      { from: /^\/admin\/.*$/, to: '/admin/index.html' },
+    ],
+  },
+},
 
   optimizeDeps: {
-    exclude: ['decap-cms-app'], // 👈 prevent Vite from touching this script
+    exclude: ['decap-cms-app'],
   },
 })

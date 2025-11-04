@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- ✅ Tell Decap where config.yml is BEFORE it loads -->
+    <script>
+      window.CMS_CONFIG_PATH = "/admin/config.yml";
+    </script>
   </head>
+
   <body>
+    <div id="nc-root"></div>
+
+    <!-- ✅ Load Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- ✅ Force CMS to re-init once script is loaded -->
+    <script>
+      window.addEventListener("load", function () {
+        console.log("📦 Initializing Decap CMS (forced config override)");
+        if (window.CMS && window.CMS_CONFIG_PATH) {
+          window.CMS_MANUAL_INIT = true;
+          window.CMS.init({ configPath: window.CMS_CONFIG_PATH });
+        } else {
+          console.error("❌ CMS not loaded properly.");
+        }
+      });
+    </script>
   </body>
 </html>
