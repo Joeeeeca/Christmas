@@ -194,6 +194,44 @@
         height: auto !important;
         min-height: 80vh !important;
       }
+
+      /* 🧹 Hide transient Decap error splash (caused by CSS overrides) */
+      [data-testid="error-boundary"] {
+        display: none !important;
+      }
+
+      /* 🪄 Fully unlock container heights to remove cramped view */
+      html,
+      body,
+      .nc-root,
+      .nc-app,
+      .nc-main-content,
+      .nc-entryEditor,
+      .nc-entryEditor-controlPane,
+      .nc-entryEditor-previewPane {
+        height: auto !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
+      /* Stretch the preview frame naturally */
+      .nc-entryEditor-previewPane iframe {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+      }
+
+      /* Center and stretch layout cleanly */
+      .nc-entryEditor {
+        align-items: stretch !important;
+      }
+
+      /* Prevent inner Decap scroll containers from limiting height */
+      .nc-entryEditor-previewPane > div {
+        height: auto !important;
+        overflow: visible !important;
+      }
     </style>
   </head>
 
