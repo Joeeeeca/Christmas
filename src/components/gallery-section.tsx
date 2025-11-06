@@ -48,7 +48,7 @@ export default function GallerySection() {
               <h2 className="text-3xl md:text-5xl font-bold text-white">{galleryData.title}</h2>
               <Sparkles className="w-8 h-8 text-christmas-gold animate-pulse" />
             </div>
-            <div className="w-24 h-1 bg-gradient-to-r from-red-500 via-green-500 to-red-500 mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-linear-to-r from-red-500 via-green-500 to-red-500 mx-auto rounded-full" />
             <p className="text-gray-300 mt-6 text-lg">{galleryData.subtitle}</p>
           </div>
 
@@ -62,7 +62,7 @@ export default function GallerySection() {
             <div className="relative">
               <button
                 onClick={() => openLightbox(currentSlide)}
-                className="w-full aspect-[4/3] rounded-lg border-2 border-red-500/30 overflow-hidden bg-slate-800/50 backdrop-blur-sm"
+                className="w-full aspect-4/3 rounded-lg border-2 border-red-500/30 overflow-hidden bg-slate-800/50 backdrop-blur-sm"
               >
                 <img
                   src={galleryData.images[currentSlide].src}
@@ -93,11 +93,11 @@ export default function GallerySection() {
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <button
-                    onClick={() => openLightbox(index)}
-                    className="group relative overflow-hidden rounded-lg border-2 border-red-500/30 hover:border-green-500/50"
-                  >
+  onClick={() => openLightbox(index)}
+  className="group relative overflow-hidden rounded-lg border-2 border-red-500/30 hover:border-green-500/50 aspect-4/3 bg-slate-800/50 backdrop-blur-sm w-full"
+>
                     <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 flex items-end justify-center pb-4 transition">
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 flex items-end justify-center pb-4 transition">
                       <span className="text-white font-semibold">Click to view</span>
                     </div>
                   </button>
