@@ -175,6 +175,25 @@
       [data-testid="error-boundary"] {
         display: none !important;
       }
+
+      /* 🩵 Force editor container to expand vertically */
+div[class*="EditorContainer"] {
+  position: static !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Allow parent containers to grow too */
+div[class*="AppMainContainer"],
+div[class*="Editor"],
+div[class*="SplitPane"] {
+  height: auto !important;
+  min-height: 100vh !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
     </style>
   </head>
 
