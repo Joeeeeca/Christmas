@@ -95,46 +95,73 @@
 
       /* --- CMS Layout improvements --- */
 
-      /* Give more breathing room around the editor */
       .nc-app-content {
         max-width: 1400px !important;
         margin: 0 auto !important;
         padding: 2rem !important;
       }
 
-      /* Make editor areas flexible and not cramped */
+      /* 🧩 Two-column layout that grows vertically (no scrollbars) */
       .nc-entryEditor {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
+        display: flex !important;
+        flex-direction: row !important;
         gap: 2rem !important;
-        min-height: 100vh !important;
+        align-items: flex-start !important;
+        width: 100% !important;
       }
 
-      /* Content (left side) */
+      /* Control pane (left side) */
       .nc-entryEditor-controlPane {
+        flex: 0 0 600px !important;
         padding: 2rem !important;
         background: rgba(255, 255, 255, 0.04) !important;
         border-radius: 16px !important;
+        border-left: 4px solid #e11d48 !important;
+        height: auto !important;
         overflow: visible !important;
-        border-left: 4px solid #e11d48;
       }
 
-      /* Preview (right side) */
+      /* Preview pane (right side) */
       .nc-entryEditor-previewPane {
+        flex: 1 !important;
         padding: 2rem !important;
         background: rgba(15, 23, 42, 0.85) !important;
         border-radius: 16px !important;
         border-left: 4px solid #22c55e !important;
+        height: auto !important;
         overflow: visible !important;
       }
 
-      /* Fix preview height and stretch naturally */
+      /* Preview iframe should expand naturally */
       .nc-entryEditor-previewPane iframe {
+        display: block !important;
+        width: 100% !important;
         height: auto !important;
         min-height: 100vh !important;
+        overflow: visible !important;
       }
 
-      /* Fix cramped header */
+      /* Global unlock for vertical growth */
+      html,
+      body,
+      .nc-root,
+      .nc-app,
+      .nc-app-content,
+      .nc-entryEditor,
+      .nc-entryEditor-controlPane,
+      .nc-entryEditor-previewPane {
+        height: auto !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
+      /* Keep everything aligned evenly */
+      .nc-entryEditor {
+        align-items: stretch !important;
+      }
+
+      /* Header */
       .nc-header {
         padding: 1.5rem 2rem !important;
         background: linear-gradient(90deg, #e11d48, #22c55e) !important;
