@@ -232,6 +232,55 @@
         height: auto !important;
         overflow: visible !important;
       }
+
+      /* ✨ Softer festive styling */
+.nc-entryEditor-controlPane {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-left: 4px solid #e11d48 !important; /* Red accent */
+  border-radius: 16px !important;
+  padding: 2rem !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Green accent for the preview */
+.nc-entryEditor-previewPane {
+  border-left: 4px solid #22c55e !important; /* Green accent */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  background: rgba(11, 17, 33, 0.85) !important;
+}
+
+/* Make section labels easier to see */
+.nc-controlPane-label {
+  font-weight: 700 !important;
+  color: #f87171 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Add slight button glow and size */
+button,
+.nc-button,
+.nc-toolbar-button {
+  font-size: 1rem !important;
+  padding: 0.6rem 1.2rem !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 8px rgba(225, 29, 72, 0.4);
+}
+
+button:hover,
+.nc-button:hover,
+.nc-toolbar-button:hover {
+  background-color: #22c55e !important;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+/* Add festive header styling */
+.nc-header {
+  background: linear-gradient(90deg, #e11d48, #22c55e) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
     </style>
   </head>
 
