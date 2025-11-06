@@ -194,6 +194,26 @@ div[class*="SplitPane"] {
   max-height: none !important;
   overflow: visible !important;
 }
+
+/* 🟢 Fix preview panel height — let it grow with content */
+div[class*="PreviewPane"],
+div[class*="PreviewPaneContainer"],
+div[class*="PreviewContent"],
+div[class*="PreviewPane-root"] {
+  height: auto !important;
+  min-height: 100vh !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Make the preview iframe itself stretch naturally */
+div[class*="PreviewPane"] iframe {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
     </style>
   </head>
 
