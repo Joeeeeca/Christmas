@@ -84,6 +84,66 @@
         margin-top: 40px;
         font-weight: 500;
       }
+
+      /* 🪄 CMS layout spacing overrides */
+.nc-app-content {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 2rem !important;
+}
+
+/* Editor form area */
+.nc-entryEditor-controlPane {
+  padding: 2rem !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-radius: 16px !important;
+}
+
+/* Form controls more vertical spacing */
+.nc-entryEditor-controlPane .nc-controlPane {
+  margin-bottom: 30px !important;
+}
+
+/* Preview area — allow more height and side spacing */
+.nc-entryEditor-previewPane {
+  padding: 2rem !important;
+  background: rgba(15, 23, 42, 0.7) !important;
+  border-radius: 16px !important;
+  overflow-y: auto !important;
+  min-height: 80vh !important;
+}
+
+/* Make text areas expand naturally */
+.nc-controlPane-widget textarea {
+  min-height: 120px !important;
+}
+
+/* Give labels and titles room */
+.nc-controlPane-label {
+  margin-bottom: 8px !important;
+}
+
+/* Fix cramped header area */
+.nc-header {
+  padding: 1.5rem 2rem !important;
+  background: rgba(11, 18, 33, 0.9) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Centered and tidy main content layout */
+.nc-main-content {
+  padding: 2rem !important;
+  display: flex !important;
+  gap: 2rem !important;
+  flex-wrap: wrap !important;
+}
+
+/* Prevent the preview panel from being too squished */
+.nc-entryEditor {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2rem !important;
+}
     </style>
   </head>
 
