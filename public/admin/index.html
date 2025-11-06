@@ -19,7 +19,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        overflow: hidden;
       }
 
       h1 {
@@ -32,7 +32,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 2rem;
+        margin: 1.5rem 0;
+        z-index: 2;
+        position: relative;
       }
 
       .cms-header img {
@@ -44,31 +46,85 @@
 
       .cms-container {
         width: 100%;
-        height: 100%;
+        flex: 1;
+        position: relative;
+        z-index: 2;
       }
 
-      /* Decap overrides */
+      /* ❄️ Snowfall background */
+      .snow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .snowflake {
+        position: absolute;
+        top: -10px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+
+      /* Decap CMS overrides */
       .nc-app {
         background-color: transparent !important;
       }
     </style>
-
-    <!-- 🎅 Load Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </head>
 
   <body>
+    <!-- ❄️ Snowflakes container -->
+    <div class="snow" id="snow"></div>
+
     <div class="cms-header">
       <img src="/images/website-logo.jpg" alt="Highfield Road Logo" />
       <h1>Highfield Road Christmas Lights</h1>
       <p style="color:#e0e0e0;">🎁 Manage your website content below 🎁</p>
     </div>
 
-    <div class="cms-container"></div>
+    <!-- 🧩 Container for CMS -->
+    <div id="nc-root" class="cms-container"></div>
 
+    <!-- 🧠 Decap CMS Setup -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // Load the CMS config
-      CMS.init({ config: '/admin/config.yml' });
+      // ✅ Initialize Decap CMS
+      window.CMS_MANUAL_INIT = true;
+      window.addEventListener("load", function () {
+        if (typeof CMS !== "undefined") {
+          CMS.init({ config_path: "/admin/config.yml" });
+        } else {
+          console.error("❌ CMS failed to load.");
+        }
+
+        // ❄️ Create snowflakes
+        const snowContainer = document.getElementById("snow");
+        const numFlakes = 25;
+        for (let i = 0; i < numFlakes; i++) {
+          const flake = document.createElement("div");
+          flake.classList.add("snowflake");
+          const size = Math.random() * 6 + 2 + "px";
+          flake.style.width = size;
+          flake.style.height = size;
+          flake.style.left = Math.random() * 100 + "%";
+          flake.style.animationDuration = 5 + Math.random() * 5 + "s";
+          flake.style.animationDelay = Math.random() * 5 + "s";
+          snowContainer.appendChild(flake);
+        }
+      });
     </script>
   </body>
 </html>
