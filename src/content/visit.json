@@ -1,6 +1,6 @@
 {
   "title": "Visit Us!!",
   "visitingHoursImage": "/images/visiting-hours.jpg",
-  "mapEmbedUrl": "https://www.google.com/maps/embed?...",
+  "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.28936298611!2d-1.3109951!3d50.751667999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48747ca6f74e9673%3A0xbb6d2ce0440d27c7!2sHighfield%20Rd%2C%20Cowes!5e0!3m2!1sen!2suk!4v1761574654081!5m2!1sen!2suk",
   "fallbackImage": "/images/location-image.jpeg"
 }

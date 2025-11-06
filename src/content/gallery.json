@@ -13,6 +13,18 @@
     {
       "src": "/images/thumbnail1.jpg",
       "alt": "Rooftop light display"
+    },
+    {
+      "src": "/images/thumbnail2.jpg",
+      "alt": "Outdoor Christmas tree"
+    },
+    {
+      "src": "/images/thumbnail3.jpg",
+      "alt": "Illuminated pathway with decorations"
+    },
+    {
+      "src": "/images/thumbnail4.jpg",
+      "alt": "Close-up of Christmas decorations and lights"
     }
   ]
 }
