@@ -294,7 +294,7 @@ button:hover,
       script.onload = () => {
         console.log("🎄 Decap CMS loaded successfully!");
         if (window.CMS) {
-          CMS.init({ config_path: "/admin/config.yml" });
+          CMS.init({ config_path: "config.yml" });
           document.getElementById("loading-message").style.display = "none";
         } else {
           console.error("⚠️ CMS object not found after loading!");

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>🎄 Highfield Road CMS | Manage Website Content</title>
 
-    <link rel="icon" href="/images/website-logo.jpg" />
+    <link rel="icon" href="../images/website-logo.jpg" />
 
     <style>
       body {
@@ -79,21 +79,17 @@
   </head>
 
   <body>
-    <!-- ❄️ Snow Background -->
     <div class="snow" id="snow"></div>
 
-    <!-- 🎄 Branding Header -->
     <div class="cms-header">
-      <img src="/images/website-logo.jpg" alt="Highfield Road Logo" />
+      <img src="../images/website-logo.jpg" alt="Highfield Road Logo" />
       <h1>Highfield Road Christmas Lights</h1>
       <p style="color:#e0e0e0;">🎁 Manage your website content below 🎁</p>
     </div>
 
-    <!-- 🧩 Embed CMS cleanly -->
-    <iframe src="/admin/decap.html"></iframe>
+    <iframe src="decap.html"></iframe>
 
     <script>
-      // Generate gentle snow
       const snowContainer = document.getElementById("snow");
       const numFlakes = 25;
       for (let i = 0; i < numFlakes; i++) {
