@@ -5,103 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Decap CMS</title>
 
-    <!-- ✅ Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-    <!-- 🌈 Custom Styling -->
-    <style>
-      /* Soft gradient background to match the main CMS */
-      body {
-        background: linear-gradient(180deg, #0b1221 0%, #1b2b3b 100%);
-        font-family: "Poppins", sans-serif;
-        color: #fff;
-        margin: 0;
-        padding: 20px;
-      }
-
-      /* Tidy up inputs */
-      input,
-      textarea,
-      select {
-        background-color: #101c2d !important;
-        color: #fff !important;
-        border: 1px solid #334155 !important;
-        border-radius: 8px !important;
-        padding: 10px 12px !important;
-        font-size: 15px !important;
-        width: 100%;
-      }
-
-      input:focus,
-      textarea:focus,
-      select:focus {
-        outline: none !important;
-        border-color: #2ecc71 !important; /* green accent */
-        box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3) !important;
-      }
-
-      /* Titles and labels */
-      label,
-      .nc-controlPane-label {
-        font-weight: 600 !important;
-        color: #ff5555 !important; /* red accent */
-        margin-bottom: 6px !important;
-      }
-
-      /* Section cards */
-      .nc-controlPane {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 16px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      /* Buttons */
-      button,
-      .nc-button,
-      .nc-toolbar-button {
-        background-color: #e11d48 !important;
-        color: #fff !important;
-        border: none !important;
-        border-radius: 8px !important;
-        font-weight: 600 !important;
-        transition: background 0.2s ease;
-      }
-
-      button:hover,
-      .nc-button:hover,
-      .nc-toolbar-button:hover {
-        background-color: #22c55e !important;
-      }
-
-      /* Preview area cleanup */
-      iframe {
-        background-color: #0f172a;
-        border-radius: 12px;
-      }
-
-      /* Fix cramped spacing */
-      .nc-main-content {
-        padding: 20px;
-      }
-
-      /* Scrollbars */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #334155;
-        border-radius: 4px;
-      }
-    </style>
   </head>
-
   <body>
     <script>
       CMS.init({ config_path: "/admin/config.yml" });
+
+      // 🎨 Wait for CMS to load and inject our custom CSS
+      const customStyle = `
+        body {
+          background: linear-gradient(180deg, #0b1221 0%, #1b2b3b 100%);
+          font-family: "Poppins", sans-serif !important;
+          color: #fff !important;
+        }
+
+        .nc-appHeader,
+        .nc-collectionPage-header {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+          backdrop-filter: blur(6px) !important;
+        }
+
+        .nc-collectionPage-entryCard {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border-radius: 12px !important;
+          padding: 10px !important;
+          transition: 0.3s ease;
+        }
+
+        .nc-collectionPage-entryCard:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        input, textarea, select {
+          background-color: #101c2d !important;
+          color: #fff !important;
+          border: 1px solid #334155 !important;
+          border-radius: 8px !important;
+          padding: 10px 12px !important;
+          font-size: 15px !important;
+          width: 100% !important;
+        }
+
+        input:focus, textarea:focus, select:focus {
+          outline: none !important;
+          border-color: #22c55e !important; /* green accent */
+          box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3) !important;
+        }
+
+        label, .nc-controlPane-label {
+          font-weight: 600 !important;
+          color: #ff5555 !important; /* red accent */
+        }
+
+        button, .nc-button, .nc-toolbar-button {
+          background-color: #e11d48 !important;
+          color: #fff !important;
+          border-radius: 8px !important;
+          font-weight: 600 !important;
+          transition: background 0.2s ease;
+        }
+
+        button:hover, .nc-button:hover, .nc-toolbar-button:hover {
+          background-color: #22c55e !important;
+        }
+
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #334155;
+          border-radius: 4px;
+        }
+      `;
+
+      const applyCustomStyles = () => {
+        const iframe = document.querySelector("iframe#nc-root, iframe");
+        if (!iframe || !iframe.contentDocument) {
+          requestAnimationFrame(applyCustomStyles);
+          return;
+        }
+
+        const doc = iframe.contentDocument;
+        if (!doc.querySelector("#custom-decapskin")) {
+          const style = doc.createElement("style");
+          style.id = "custom-decapskin";
+          style.innerHTML = customStyle;
+          doc.head.appendChild(style);
+        }
+      };
+
+      window.addEventListener("load", () => {
+        // Try multiple times because Decap loads asynchronously
+        for (let i = 0; i < 10; i++) {
+          setTimeout(applyCustomStyles, i * 1000);
+        }
+      });
     </script>
   </body>
 </html>
