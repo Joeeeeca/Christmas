@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Highfield Road CMS 🎄</title>
 
-    <!-- 🌈 Custom Styling -->
     <style>
       body {
         background: linear-gradient(180deg, #0b1221 0%, #1b2b3b 100%);
@@ -15,6 +14,7 @@
         padding: 20px;
       }
 
+      /* Inputs and text fields */
       input,
       textarea,
       select {
@@ -35,22 +35,27 @@
         box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3) !important;
       }
 
+      /* Field labels */
       label,
       .nc-controlPane-label {
         font-weight: 600 !important;
         color: #e11d48 !important;
         margin-bottom: 6px !important;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
       }
 
+      /* Card-style control groups */
       .nc-controlPane {
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 16px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        border-left: 4px solid #e11d48;
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
       }
 
+      /* Buttons */
       button,
       .nc-button,
       .nc-toolbar-button {
@@ -59,34 +64,27 @@
         border: none !important;
         border-radius: 8px !important;
         font-weight: 600 !important;
-        transition: background 0.2s ease;
+        transition: background 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 0 8px rgba(225, 29, 72, 0.3);
       }
 
       button:hover,
       .nc-button:hover,
       .nc-toolbar-button:hover {
         background-color: #22c55e !important;
+        box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
       }
 
-      iframe {
-        background-color: #0f172a;
-        border-radius: 12px;
-      }
-
-      .nc-main-content {
-        padding: 20px;
-      }
-
+      /* Scrollbars */
       ::-webkit-scrollbar {
         width: 8px;
       }
-
       ::-webkit-scrollbar-thumb {
         background: #334155;
         border-radius: 4px;
       }
 
-      /* 🎄 Loading message */
+      /* Loading message */
       #loading-message {
         text-align: center;
         color: #fff;
@@ -95,145 +93,61 @@
         font-weight: 500;
       }
 
-      /* 🪄 CMS layout spacing overrides */
+      /* --- CMS Layout improvements --- */
+
+      /* Give more breathing room around the editor */
       .nc-app-content {
         max-width: 1400px !important;
         margin: 0 auto !important;
         padding: 2rem !important;
       }
 
-      /* Editor form area */
-      .nc-entryEditor-controlPane {
-        padding: 2rem !important;
-        background: rgba(255, 255, 255, 0.04) !important;
-        border-radius: 16px !important;
-      }
-
-      /* Form controls more vertical spacing */
-      .nc-entryEditor-controlPane .nc-controlPane {
-        margin-bottom: 30px !important;
-      }
-
-      /* Preview area — allow more height and side spacing */
-      .nc-entryEditor-previewPane {
-        padding: 2rem !important;
-        background: rgba(15, 23, 42, 0.7) !important;
-        border-radius: 16px !important;
-        overflow-y: auto !important;
-        min-height: 80vh !important;
-      }
-
-      /* Make text areas expand naturally */
-      .nc-controlPane-widget textarea {
-        min-height: 120px !important;
-      }
-
-      /* Give labels and titles room */
-      .nc-controlPane-label {
-        margin-bottom: 8px !important;
-      }
-
-      /* Fix cramped header area */
-      .nc-header {
-        padding: 1.5rem 2rem !important;
-        background: rgba(11, 18, 33, 0.9) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      /* Centered and tidy main content layout */
-      .nc-main-content {
-        padding: 2rem !important;
-        display: flex !important;
-        gap: 2rem !important;
-        flex-wrap: wrap !important;
-      }
-
-      /* Prevent the preview panel from being too squished */
+      /* Make editor areas flexible and not cramped */
       .nc-entryEditor {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
         gap: 2rem !important;
-      }
-
-      /* 🧩 Remove fixed height and inner scrollbars from CMS panels */
-      .nc-entryEditor,
-      .nc-entryEditor-controlPane,
-      .nc-entryEditor-previewPane {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-      }
-
-      /* Let the entire editor stretch with its content */
-      .nc-entryEditor {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 2rem !important;
         min-height: 100vh !important;
       }
 
-      /* Preview side expands fully */
-      .nc-entryEditor-previewPane {
-        flex: 1 !important;
-        height: auto !important;
-        background: rgba(15, 23, 42, 0.8) !important;
-        border-radius: 16px !important;
-        padding: 2rem !important;
-        overflow: visible !important;
-      }
-
-      /* Control side (left column) takes only the width it needs */
+      /* Content (left side) */
       .nc-entryEditor-controlPane {
-        flex: 0 0 600px !important;
+        padding: 2rem !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border-radius: 16px !important;
+        overflow: visible !important;
+        border-left: 4px solid #e11d48;
+      }
+
+      /* Preview (right side) */
+      .nc-entryEditor-previewPane {
+        padding: 2rem !important;
+        background: rgba(15, 23, 42, 0.85) !important;
+        border-radius: 16px !important;
+        border-left: 4px solid #22c55e !important;
         overflow: visible !important;
       }
 
-      /* Let the iframe preview stretch naturally too */
+      /* Fix preview height and stretch naturally */
       .nc-entryEditor-previewPane iframe {
         height: auto !important;
-        min-height: 80vh !important;
+        min-height: 100vh !important;
       }
 
-      /* 🧹 Hide transient Decap error splash (caused by CSS overrides) */
+      /* Fix cramped header */
+      .nc-header {
+        padding: 1.5rem 2rem !important;
+        background: linear-gradient(90deg, #e11d48, #22c55e) !important;
+        color: #fff !important;
+        border: none;
+        font-weight: 600 !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Hide Decap error splash safely */
       [data-testid="error-boundary"] {
         display: none !important;
       }
-
-      /* 🪄 Fully unlock container heights to remove cramped view */
-      html,
-      body,
-      .nc-root,
-      .nc-app,
-      .nc-main-content,
-      .nc-entryEditor,
-      .nc-entryEditor-controlPane,
-      .nc-entryEditor-previewPane {
-        height: auto !important;
-        min-height: 100vh !important;
-        max-height: none !important;
-        overflow: visible !important;
-      }
-
-      /* Stretch the preview frame naturally */
-      .nc-entryEditor-previewPane iframe {
-        height: auto !important;
-        min-height: 100vh !important;
-        overflow: visible !important;
-      }
-
-      /* Center and stretch layout cleanly */
-      .nc-entryEditor {
-        align-items: stretch !important;
-      }
-
-      /* Prevent inner Decap scroll containers from limiting height */
-      .nc-entryEditor-previewPane > div {
-        height: auto !important;
-        overflow: visible !important;
-      }
-
-      
     </style>
   </head>
 
@@ -241,7 +155,6 @@
     <div id="loading-message">🎅 Loading Decap CMS... please wait 🎄</div>
 
     <script>
-      // ✅ Dynamically load the Decap CMS script
       const script = document.createElement("script");
       script.src = "https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js";
       script.onload = () => {
