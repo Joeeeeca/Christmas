@@ -13,16 +13,18 @@ collections:
     files:
       # === HERO SECTION ===
       - file: "src/content/hero.json"
-        label: "Hero Section"
+        label: "Hero Settings"
         name: "hero"
+        widget: "object"
+        collapsed: true
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Text", name: "text", widget: "text" }
-          - { label: "Background Image", name: "backgroundImage", widget: "image" }
-          - { label: "Button 1 Text", name: "button1Text", widget: "string" }
-          - { label: "Button 1 Link", name: "button1Link", widget: "string" }
-          - { label: "Button 2 Text", name: "button2Text", widget: "string" }
-          - { label: "Button 2 Link", name: "button2Link", widget: "string" }
+          - { label: "Title", name: "title", widget: "string", hint: "Main title shown on the homepage hero section" }
+          - { label: "Text", name: "text", widget: "text", hint: "Short welcome message displayed below the headline" }
+          - { label: "Background Image", name: "backgroundImage", widget: "image", hint: "Hero background photo"  }
+          - { label: "Button 1 Text", name: "button1Text", widget: "string", hint: "Label for the first button" }
+          - { label: "Button 1 Link", name: "button1Link", widget: "string", hint: "Anchor link or URL for the first button" }
+          - { label: "Button 2 Text", name: "button2Text", widget: "string", hint: "Label for the second button" }
+          - { label: "Button 2 Link", name: "button2Link", widget: "string", hint: "Anchor link or URL for the second button" }
 
       # === ABOUT SECTION ===
       - file: "src/content/about.json"
