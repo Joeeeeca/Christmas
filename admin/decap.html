@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Highfield Road CMS 🎄</title>
 
-    <!-- ✅ Load Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js" defer></script>
-
     <!-- 🌈 Custom Styling -->
     <style>
       body {
@@ -78,20 +75,40 @@
         background: #334155;
         border-radius: 4px;
       }
+
+      /* 🎄 Loading message */
+      #loading-message {
+        text-align: center;
+        color: #fff;
+        font-size: 1.2rem;
+        margin-top: 40px;
+        font-weight: 500;
+      }
     </style>
   </head>
 
   <body>
+    <div id="loading-message">🎅 Loading Decap CMS... please wait 🎄</div>
+
     <script>
-      // ✅ Wait until the CMS script has finished loading
-      window.addEventListener("load", () => {
+      // ✅ Dynamically load the Decap CMS script
+      const script = document.createElement("script");
+      script.src = "https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js";
+      script.onload = () => {
+        console.log("🎄 Decap CMS loaded successfully!");
         if (window.CMS) {
           CMS.init({ config_path: "/admin/config.yml" });
-          console.log("🎄 Decap CMS loaded successfully!");
+          document.getElementById("loading-message").style.display = "none";
         } else {
-          console.error("⚠️ Decap CMS failed to load.");
+          console.error("⚠️ CMS object not found after loading!");
+          document.getElementById("loading-message").innerText = "❌ Failed to load CMS. Please refresh.";
         }
-      });
+      };
+      script.onerror = () => {
+        console.error("❌ Failed to load Decap CMS script!");
+        document.getElementById("loading-message").innerText = "⚠️ Error loading Decap CMS. Try again later.";
+      };
+      document.body.appendChild(script);
     </script>
   </body>
 </html>
