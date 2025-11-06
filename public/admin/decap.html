@@ -15,7 +15,9 @@
         padding: 20px;
       }
 
-      input, textarea, select {
+      input,
+      textarea,
+      select {
         background-color: #101c2d !important;
         color: #fff !important;
         border: 1px solid #334155 !important;
@@ -25,13 +27,16 @@
         width: 100%;
       }
 
-      input:focus, textarea:focus, select:focus {
+      input:focus,
+      textarea:focus,
+      select:focus {
         outline: none !important;
         border-color: #22c55e !important;
         box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3) !important;
       }
 
-      label, .nc-controlPane-label {
+      label,
+      .nc-controlPane-label {
         font-weight: 600 !important;
         color: #e11d48 !important;
         margin-bottom: 6px !important;
@@ -46,7 +51,9 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
 
-      button, .nc-button, .nc-toolbar-button {
+      button,
+      .nc-button,
+      .nc-toolbar-button {
         background-color: #e11d48 !important;
         color: #fff !important;
         border: none !important;
@@ -55,7 +62,9 @@
         transition: background 0.2s ease;
       }
 
-      button:hover, .nc-button:hover, .nc-toolbar-button:hover {
+      button:hover,
+      .nc-button:hover,
+      .nc-toolbar-button:hover {
         background-color: #22c55e !important;
       }
 
@@ -71,6 +80,7 @@
       ::-webkit-scrollbar {
         width: 8px;
       }
+
       ::-webkit-scrollbar-thumb {
         background: #334155;
         border-radius: 4px;
@@ -83,6 +93,106 @@
         font-size: 1.2rem;
         margin-top: 40px;
         font-weight: 500;
+      }
+
+      /* 🪄 CMS layout spacing overrides */
+      .nc-app-content {
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        padding: 2rem !important;
+      }
+
+      /* Editor form area */
+      .nc-entryEditor-controlPane {
+        padding: 2rem !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border-radius: 16px !important;
+      }
+
+      /* Form controls more vertical spacing */
+      .nc-entryEditor-controlPane .nc-controlPane {
+        margin-bottom: 30px !important;
+      }
+
+      /* Preview area — allow more height and side spacing */
+      .nc-entryEditor-previewPane {
+        padding: 2rem !important;
+        background: rgba(15, 23, 42, 0.7) !important;
+        border-radius: 16px !important;
+        overflow-y: auto !important;
+        min-height: 80vh !important;
+      }
+
+      /* Make text areas expand naturally */
+      .nc-controlPane-widget textarea {
+        min-height: 120px !important;
+      }
+
+      /* Give labels and titles room */
+      .nc-controlPane-label {
+        margin-bottom: 8px !important;
+      }
+
+      /* Fix cramped header area */
+      .nc-header {
+        padding: 1.5rem 2rem !important;
+        background: rgba(11, 18, 33, 0.9) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      /* Centered and tidy main content layout */
+      .nc-main-content {
+        padding: 2rem !important;
+        display: flex !important;
+        gap: 2rem !important;
+        flex-wrap: wrap !important;
+      }
+
+      /* Prevent the preview panel from being too squished */
+      .nc-entryEditor {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2rem !important;
+      }
+
+      /* 🧩 Remove fixed height and inner scrollbars from CMS panels */
+      .nc-entryEditor,
+      .nc-entryEditor-controlPane,
+      .nc-entryEditor-previewPane {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
+      /* Let the entire editor stretch with its content */
+      .nc-entryEditor {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 2rem !important;
+        min-height: 100vh !important;
+      }
+
+      /* Preview side expands fully */
+      .nc-entryEditor-previewPane {
+        flex: 1 !important;
+        height: auto !important;
+        background: rgba(15, 23, 42, 0.8) !important;
+        border-radius: 16px !important;
+        padding: 2rem !important;
+        overflow: visible !important;
+      }
+
+      /* Control side (left column) takes only the width it needs */
+      .nc-entryEditor-controlPane {
+        flex: 0 0 600px !important;
+        overflow: visible !important;
+      }
+
+      /* Let the iframe preview stretch naturally too */
+      .nc-entryEditor-previewPane iframe {
+        height: auto !important;
+        min-height: 80vh !important;
       }
     </style>
   </head>
@@ -101,12 +211,14 @@
           document.getElementById("loading-message").style.display = "none";
         } else {
           console.error("⚠️ CMS object not found after loading!");
-          document.getElementById("loading-message").innerText = "❌ Failed to load CMS. Please refresh.";
+          document.getElementById("loading-message").innerText =
+            "❌ Failed to load CMS. Please refresh.";
         }
       };
       script.onerror = () => {
         console.error("❌ Failed to load Decap CMS script!");
-        document.getElementById("loading-message").innerText = "⚠️ Error loading Decap CMS. Try again later.";
+        document.getElementById("loading-message").innerText =
+          "⚠️ Error loading Decap CMS. Try again later.";
       };
       document.body.appendChild(script);
     </script>
