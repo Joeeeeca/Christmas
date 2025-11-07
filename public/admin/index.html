@@ -147,7 +147,7 @@
       span,
       p,
       h1, h2, h3, h4, h5, h6 {
-        color: var(--snow-white) !important;
+        color: #000000 !important;
         font-weight: 600 !important;
       }
 
@@ -227,14 +227,27 @@
 }
 
 
-.css-1fbp2m3-PreviewContainer {
-  margin-top:60px;
+.css-83wr9v {
+  background-color:transparent;
+  border-color: var(--christmas-gold);
 }
 
       .css-y5bbau-AppHeaderContent,
       .css-8zenuf-AppHeader-css {
         display: none !important;
       }
+
+      /* === Push content below the Decap CMS AppHeader === */
+[class*="AppMainContainer"],
+[class*="MainContent"],
+[class*="EditorContainer"],
+[class*="CollectionContainer"],
+[class*="PaneContainer"] {
+  margin-top: 60px !important; /* moves all editable content down */
+  padding-top: 10px !important;
+  z-index: 1;
+  position: relative;
+}
     </style>
   </head>
    <body>
