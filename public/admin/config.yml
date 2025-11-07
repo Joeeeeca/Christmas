@@ -6,6 +6,10 @@ backend:
   auth_endpoint: /api/auth
   publish_mode: editorial_workflow
 
+# ✅ Disable preview pane
+editor:
+  preview: false
+
 media_folder: "public/images"
 public_folder: "/images"
 
