@@ -68,6 +68,8 @@
       /* Add top padding to the main CMS container to prevent overlap */
       #nc-root > div {
         padding-top: 20px !important;
+        min-height: 100vh !important;
+        height: 100% !important;
       }
 
       /* Main CMS container styling */
@@ -147,7 +149,7 @@
       span,
       p,
       h1, h2, h3, h4, h5, h6 {
-        color: #000000 !important;
+        color: var(--snow-white) !important;
         font-weight: 600 !important;
       }
 
@@ -217,88 +219,67 @@
         margin-top: 20px !important;
       }
 
-      /* === Override Decap CMS preview pane background === */
-[class*="StyledSplitPane"],
-[class*="splitPane"],
-[class*="card-splitPane"],
-.css-z43u28-StyledSplitPane-card-card-splitPane-splitPane {
-  background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%) !important;
-  color: var(--snow-white) !important;
-}
+      /* Override Decap CMS preview pane background */
+      [class*="StyledSplitPane"],
+      [class*="splitPane"],
+      [class*="card-splitPane"],
+      .css-z43u28-StyledSplitPane-card-card-splitPane-splitPane {
+        background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%) !important;
+        color: var(--snow-white) !important;
+      }
 
-
-.css-83wr9v {
-  background-color:transparent;
-  border-color: var(--christmas-gold);
-}
+      .css-83wr9v {
+        background-color: transparent;
+        border-color: var(--christmas-gold);
+      }
 
       .css-y5bbau-AppHeaderContent,
       .css-8zenuf-AppHeader-css {
         display: none !important;
       }
 
-/* Push the right-hand live preview below the sticky header */
-#preview-pane {
-  margin-top: 60px !important;  /* works per your DevTools test */
-  display: block;               /* ensure margin applies */
-}
+      /* Push preview pane below header without adding extra overflow */
+      #preview-pane {
+        margin-top: 60px !important;
+        display: block;
+      }
 
-/* Also push the left form pane down so both sides line up */
-#nc-root [class*="EditorControlPane"],
-#nc-root [class*="ControlPaneContainer"],
-#nc-root [class*="EditorContainer"] {
-  margin-top: 60px !important;
-}
+      /* Align both panes without forcing overflow scrolling */
+      #nc-root [class*="EditorControlPane"],
+      #nc-root [class*="ControlPaneContainer"],
+      #nc-root [class*="EditorContainer"] {
+        margin-top: 60px !important;
+      }
 
-/* Replace that white split pane background with your navy gradient */
-#nc-root [class*="StyledSplitPane"] {
-  background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%) !important;
-}
+      /* Replace white split pane background with navy gradient */
+      #nc-root [class*="StyledSplitPane"] {
+        background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%) !important;
+      }
 
-/* If a white card sits under the preview, make it transparent */
-#nc-root [class*="PreviewPane"],
-#nc-root [class*="PaneContent"] {
-  background: transparent !important;
-}
+      /* Make preview background transparent */
+      #nc-root [class*="PreviewPane"],
+      #nc-root [class*="PaneContent"] {
+        background: transparent !important;
+      }
 
-/* Extend total height & allow scrolling */
-#nc-root,
-#nc-root > div,
-#nc-root [class*="AppMainContainer"],
-#nc-root [class*="PaneContainer"],
-#nc-root [class*="SplitPane"],
-#nc-root [class*="EditorContainer"],
-#preview-pane {
-  min-height: calc(100vh - 60px) !important; /* account for top banner height */
-  height: auto !important;
-  overflow-y: auto !important; /* ensures both panes can scroll */
-  padding-bottom: 80px !important; /* adds breathing room at the bottom */
-}
+      /* Set proper height without forcing overflow on nested elements */
+      #nc-root {
+        min-height: 100vh !important;
+        height: 100% !important;
+      }
 
-/* Also ensure inner content doesn't clip */
-#nc-root [class*="PreviewPaneContent"],
-#nc-root [class*="ControlPaneContainer"] {
-  padding-bottom: 80px !important;
-  overflow-y: auto !important;
-}
+      /* Add padding for breathing room without overflow */
+      #nc-root [class*="PreviewPaneContent"],
+      #nc-root [class*="ControlPaneContainer"] {
+        padding-bottom: 40px !important;
+      }
     </style>
-    <script type="module" crossorigin src="../../assets/admin-CILe_ZNf.js"></script>
+    <script type="module" crossorigin src="../../assets/admin-BnDBwNNh.js"></script>
     <link rel="modulepreload" crossorigin href="../../assets/index-C96Rwy73.js">
   </head>
-   <body>
-    <!-- 1️⃣ Tell Decap not to auto-initialize -->
-    <script>
-      window.CMS_MANUAL_INIT = true;
-    </script>
-
-    <!-- 2️⃣ Load Decap CMS core -->
+  <body>
+    <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-    <!-- 3️⃣ Initialize CMS manually and point it to the config file -->
-    <script>
-      CMS.init({ config: '/admin/config.yml' });
-    </script>
-
-    <!-- 4️⃣ Load your custom CMS logic and previews -->
+    <!-- Changed from absolute path /admin/preview.js to relative path ./preview.js for Vite build -->
   </body>
 </html>
