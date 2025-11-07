@@ -1,7 +1,9 @@
 backend:
   name: github
-  repo: "Joeeeeca/Christmas"
+  repo: Joeeeeca/Christmas # your actual GitHub repo
   branch: main
+  base_url: https://christmas-lights-cms.vercel.app # your actual Vercel URL
+  auth_endpoint: /api/auth
   publish_mode: editorial_workflow
 
 media_folder: "public/images"
@@ -20,7 +22,7 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string", hint: "Main title shown on the homepage hero section" }
           - { label: "Text", name: "text", widget: "text", hint: "Short welcome message displayed below the headline" }
-          - { label: "Background Image", name: "backgroundImage", widget: "image", hint: "Hero background photo"  }
+          - { label: "Background Image", name: "backgroundImage", widget: "image", hint: "Hero background photo" }
           - { label: "Button 1 Text", name: "button1Text", widget: "string", hint: "Label for the first button" }
           - { label: "Button 1 Link", name: "button1Link", widget: "string", hint: "Anchor link or URL for the first button" }
           - { label: "Button 2 Text", name: "button2Text", widget: "string", hint: "Label for the second button" }
@@ -76,4 +78,3 @@ collections:
           - { label: "Donation Text", name: "donationText", widget: "text" }
           - { label: "Donation URL", name: "donationUrl", widget: "string" }
           - { label: "Facebook URL", name: "facebookUrl", widget: "string" }
-
