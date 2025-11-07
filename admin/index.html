@@ -364,6 +364,44 @@
         overflow: visible !important;
         height: auto !important;
       }
+
+      /* Add extremely aggressive overrides for preview pane specifically */
+      /* Target any div with Pane2 class or containing preview content */
+      div[class*="Pane2"],
+      div[class*="preview"],
+      [data-testid*="preview"],
+      .vertical.Pane2,
+      div.Pane.vertical.Pane2,
+      div[style*="overflow"] {
+        overflow: visible !important;
+        overflow-y: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        min-height: fit-content !important;
+        flex: 1 1 auto !important;
+      }
+
+      /* Force flex containers to not constrain height */
+      [class*="SplitPane"] > div,
+      [class*="SplitPane"] > div > div {
+        height: auto !important;
+        overflow: visible !important;
+        flex: 1 1 auto !important;
+      }
+
+      /* Override any computed flex or height styles */
+      .Pane {
+        flex-basis: auto !important;
+        flex-grow: 1 !important;
+        flex-shrink: 0 !important;
+      }
+
+      /* Make iframes and their containers respect content height */
+      iframe,
+      iframe[id*="preview"] {
+        min-height: 100vh !important;
+        height: auto !important;
+      }
     </style>
   </head>
   <body>
