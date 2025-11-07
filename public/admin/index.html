@@ -218,10 +218,22 @@
       }
     </style>
   </head>
-  <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
+   <body>
+    <!-- 1️⃣ Tell Decap not to auto-initialize -->
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+
+    <!-- 2️⃣ Load Decap CMS core -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- Added custom preview template script to show styled previews instead of raw text -->
-    <script src="/admin/preview.js" type="module"></script>
+
+    <!-- 3️⃣ Initialize CMS manually and point it to the config file -->
+    <script>
+      CMS.init({ config: '/admin/config.yml' });
+    </script>
+
+    <!-- 4️⃣ Load your custom CMS logic and previews -->
+    <script type="module" src="/src/admin/cms.js"></script>
+    <script type="module" src="/src/admin/preview.js"></script>
   </body>
 </html>
