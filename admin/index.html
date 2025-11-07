@@ -321,6 +321,42 @@
         position: relative !important;
         overflow: visible !important;
       }
+
+      /* Nuclear option - override all possible overflow and height properties */
+      * {
+        max-height: none !important;
+      }
+
+      /* Force all Decap CMS containers to not use overflow scrolling */
+      div[class*="Pane"],
+      div[class*="pane"],
+      div[class*="Split"],
+      div[class*="split"],
+      div[class*="Container"],
+      div[class*="Wrapper"] {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+      }
+
+      /* Disable flexbox heights that force scrolling */
+      [style*="height"],
+      [style*="max-height"],
+      [style*="overflow"] {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
+      /* Force the SplitPane component to not use fixed heights */
+      .SplitPane {
+        height: auto !important;
+        position: relative !important;
+      }
+
+      .Resizer {
+        display: none !important;
+      }
     </style>
   </head>
   <body>
