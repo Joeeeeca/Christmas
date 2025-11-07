@@ -6,150 +6,213 @@
     <title>Christmas Lights CMS</title>
     
     <!-- Added custom Christmas-themed styling for the CMS -->
-   <style>
-  :root {
-    --christmas-navy: #111b2e;
-    --christmas-blue: #1f3250;
-    --christmas-gold: #fbbf24;
-    --christmas-red: #e11d48;
-    --christmas-green: #16a34a;
-    --snow-white: #f9fafb;
-    --frost-gray: #cbd5e1;
-  }
+    <style>
+      :root {
+        --christmas-navy: #0f172a;
+        --christmas-blue: #1e3a5f;
+        --christmas-gold: #fbbf24;
+        --christmas-red: #dc2626;
+        --christmas-green: #16a34a;
+        --snow-white: #f8fafc;
+      }
 
-  body {
-    background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--snow-white);
-  }
+      body {
+        background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-  /* Header banner */
-  #nc-root::before {
-    content: '🎄 Christmas Lights Display Editor 🎄';
-    display: block;
-    background: linear-gradient(90deg, var(--christmas-red), var(--christmas-green));
-    color: white;
-    text-align: center;
-    padding: 18px 10px;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
+      /* Starry night background effect */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          radial-gradient(2px 2px at 20% 30%, white, transparent),
+          radial-gradient(2px 2px at 60% 70%, white, transparent),
+          radial-gradient(1px 1px at 50% 50%, white, transparent),
+          radial-gradient(1px 1px at 80% 10%, white, transparent),
+          radial-gradient(2px 2px at 90% 60%, white, transparent),
+          radial-gradient(1px 1px at 33% 80%, white, transparent),
+          radial-gradient(1px 1px at 65% 20%, white, transparent);
+        background-size: 200% 200%;
+        background-position: 0% 0%;
+        animation: twinkle 3s ease-in-out infinite;
+        pointer-events: none;
+        opacity: 0.6;
+        z-index: 0;
+      }
 
-  /* Sidebar and header */
-  aside,
-  [class*="SidebarContainer"],
-  [class*="AppHeader"] {
-    background-color: rgba(25, 45, 70, 0.95) !important;
-    border-right: 2px solid var(--christmas-gold) !important;
-    backdrop-filter: blur(8px);
-  }
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 0.3; }
+      }
 
-  [class*="AppHeader"] {
-    border-bottom: 2px solid var(--christmas-gold) !important;
-  }
+      /* Christmas header banner */
+      #nc-root::before {
+        content: '🎄 Christmas Lights Display Editor 🎄';
+        display: block;
+        background: linear-gradient(90deg, var(--christmas-red) 0%, var(--christmas-green) 50%, var(--christmas-red) 100%);
+        color: white;
+        text-align: center;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+      }
 
-  /* Form fields */
-  label {
-    color: var(--frost-gray) !important;
-    font-weight: 600 !important;
-    margin-bottom: 4px !important;
-  }
+      /* Main CMS container styling */
+      [data-slate-editor="true"],
+      .css-1qzevvg,
+      .css-79elbk {
+        background-color: rgba(15, 23, 42, 0.95) !important;
+        backdrop-filter: blur(10px);
+        color: var(--snow-white) !important;
+      }
 
-  input,
-  textarea,
-  select {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    border: 1.5px solid var(--christmas-gold) !important;
-    color: var(--snow-white) !important;
-    border-radius: 6px !important;
-    padding: 10px !important;
-    margin-top: 4px !important;
-  }
+      /* Sidebar styling */
+      aside,
+      [class*="SidebarContainer"] {
+        background-color: rgba(30, 58, 95, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-right: 2px solid var(--christmas-gold) !important;
+      }
 
-  input:focus,
-  textarea:focus,
-  select:focus {
-    border-color: var(--christmas-red) !important;
-    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25) !important;
-    outline: none;
-  }
+      /* Navigation and buttons */
+      button,
+      [role="button"] {
+        background-color: var(--christmas-gold) !important;
+        color: var(--christmas-navy) !important;
+        border: none !important;
+        border-radius: 6px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+      }
 
-  /* Buttons */
-  button,
-  [role="button"] {
-    background-color: var(--christmas-gold) !important;
-    color: var(--christmas-navy) !important;
-    border: none !important;
-    border-radius: 6px !important;
-    font-weight: 600 !important;
-    transition: all 0.25s ease !important;
-  }
+      button:hover,
+      [role="button"]:hover {
+        background-color: var(--christmas-red) !important;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.3) !important;
+      }
 
-  button:hover,
-  [role="button"]:hover {
-    background-color: var(--christmas-red) !important;
-    color: white !important;
-    transform: translateY(-1px);
-  }
+      /* Input fields */
+      input,
+      textarea,
+      select {
+        background-color: rgba(248, 250, 252, 0.1) !important;
+        border: 2px solid var(--christmas-gold) !important;
+        color: var(--snow-white) !important;
+        border-radius: 6px !important;
+        padding: 8px !important;
+      }
 
-  /* Cards & collections */
-  li,
-  [class*="CardLink"] {
-    background-color: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid var(--christmas-gold) !important;
-    border-radius: 8px !important;
-    margin-bottom: 12px !important;
-    transition: all 0.3s ease !important;
-    padding: 6px !important;
-  }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--christmas-red) !important;
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2) !important;
+      }
 
-  li:hover,
-  [class*="CardLink"]:hover {
-    background-color: rgba(251, 191, 36, 0.15) !important;
-    border-color: var(--christmas-red) !important;
-    transform: translateX(4px);
-  }
+      /* Collection list items */
+      li,
+      [class*="CardLink"] {
+        background-color: rgba(248, 250, 252, 0.1) !important;
+        border: 1px solid var(--christmas-gold) !important;
+        border-radius: 8px !important;
+        margin-bottom: 10px !important;
+        transition: all 0.3s ease !important;
+      }
 
-  /* Editor area */
-  [data-slate-editor="true"],
-  .css-1qzevvg,
-  .css-79elbk {
-    background-color: rgba(17, 27, 46, 0.95) !important;
-    backdrop-filter: blur(10px);
-    color: var(--snow-white) !important;
-  }
+      li:hover,
+      [class*="CardLink"]:hover {
+        background-color: rgba(251, 191, 36, 0.2) !important;
+        border-color: var(--christmas-red) !important;
+        transform: translateX(5px);
+      }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--christmas-navy);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--christmas-gold);
-    border-radius: 6px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--christmas-red);
-  }
+      /* Text and labels */
+      label,
+      span,
+      p,
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--snow-white) !important;
+        font-weight: 600 !important;
+      }
 
-  /* Preview pane */
-  iframe {
-    border: 2px solid var(--christmas-gold) !important;
-    border-radius: 8px !important;
-    margin-top: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  }
-</style>
+      /* Specific styling for field labels to ensure high contrast */
+      label[for],
+      [class*="FieldLabel"],
+      [class*="field-label"] {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 8px !important;
+        display: block !important;
+      }
 
+      /* Enhanced visibility for gray text elements */
+      [class*="FieldHint"],
+      [class*="field-hint"],
+      small {
+        color: #e2e8f0 !important;
+        font-weight: 500 !important;
+      }
+
+      /* Preview pane */
+      iframe {
+        border: 3px solid var(--christmas-gold) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
+      }
+
+      /* Save button special styling */
+      [class*="ToolbarButton"] {
+        background: linear-gradient(135deg, var(--christmas-green) 0%, var(--christmas-red) 100%) !important;
+        color: white !important;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--christmas-navy);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--christmas-gold);
+        border-radius: 6px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--christmas-red);
+      }
+
+      /* Welcome message */
+      [class*="AppHeader"] {
+        background: rgba(30, 58, 95, 0.95) !important;
+        border-bottom: 3px solid var(--christmas-gold) !important;
+      }
+
+      /* Added spacing below the Contents/Media tabs banner */
+      [class*="ControlPaneContainer"],
+      [class*="TabsContainer"] + div,
+      [class*="EditorContainer"] {
+        padding-top: 20px !important;
+        margin-top: 20px !important;
+      }
+    </style>
   </head>
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
