@@ -50,7 +50,7 @@
         50% { opacity: 0.3; }
       }
 
-      /* Fixed z-index and positioning for Christmas header banner */
+      /* Removed sticky positioning and z-index that was breaking layout */
       #nc-root::before {
         content: '🎄 Christmas Lights Display Editor 🎄';
         display: block;
@@ -62,10 +62,7 @@
         font-weight: bold;
         letter-spacing: 1px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        margin-bottom: 0;
+        margin-bottom: 10px;
       }
 
       /* Main CMS container styling */
@@ -207,25 +204,9 @@
         border-bottom: 3px solid var(--christmas-gold) !important;
       }
 
-      /* Fixed positioning for main app container */
+      /* Simplified positioning to prevent layout issues */
       #nc-root {
         position: relative;
-        z-index: 1;
-      }
-
-      [class*="AppMainContainer"],
-      [class*="AppHeader"] {
-        position: relative;
-        z-index: 50;
-        margin-top: 0 !important;
-      }
-
-      /* Added spacing below the Contents/Media tabs banner */
-      [class*="ControlPaneContainer"],
-      [class*="TabsContainer"] + div,
-      [class*="EditorContainer"] {
-        padding-top: 20px !important;
-        margin-top: 20px !important;
       }
     </style>
   </head>
