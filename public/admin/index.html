@@ -273,12 +273,60 @@
       #nc-root [class*="ControlPaneContainer"] {
         padding-bottom: 40px !important;
       }
+
+      /* Override Decap CMS fixed heights and overflow to enable natural page scrolling */
+      /* Remove fixed heights and overflow from split panes */
+      [class*="StyledSplitPane"],
+      [class*="splitPane"],
+      [class*="Pane"],
+      .Pane1,
+      .Pane2 {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        position: relative !important;
+      }
+
+      /* Allow editor and preview panes to flow naturally */
+      [class*="EditorControlPane"],
+      [class*="ControlPaneContainer"],
+      [class*="PreviewPane"],
+      [class*="PreviewPaneFrame"] {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        position: relative !important;
+      }
+
+      /* Remove overflow from parent containers */
+      #nc-root,
+      #nc-root > div,
+      [class*="EditorContainer"],
+      [class*="AppMainContainer"] {
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      /* Let the body handle all scrolling */
+      html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+      }
+
+      /* Ensure content doesn't have fixed positioning that breaks flow */
+      [class*="EditorControl"],
+      [class*="ControlPane"] {
+        position: relative !important;
+        overflow: visible !important;
+      }
     </style>
   </head>
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <!-- Changed from absolute path /admin/preview.js to relative path ./preview.js for Vite build -->
-    <script type="module" src="/src/admin/preview.js"></script>
+<script type="module" src="/src/admin/preview.js"></script>
   </body>
 </html>
