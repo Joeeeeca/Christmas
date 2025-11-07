@@ -237,16 +237,28 @@
         display: none !important;
       }
 
-      /* === Push content below the Decap CMS AppHeader === */
-[class*="AppMainContainer"],
-[class*="MainContent"],
-[class*="EditorContainer"],
-[class*="CollectionContainer"],
-[class*="PaneContainer"] {
-  margin-top: 60px !important; /* moves all editable content down */
-  padding-top: 10px !important;
-  z-index: 1;
-  position: relative;
+/* Push the right-hand live preview below the sticky header */
+#preview-pane {
+  margin-top: 60px !important;  /* works per your DevTools test */
+  display: block;               /* ensure margin applies */
+}
+
+/* Also push the left form pane down so both sides line up */
+#nc-root [class*="EditorControlPane"],
+#nc-root [class*="ControlPaneContainer"],
+#nc-root [class*="EditorContainer"] {
+  margin-top: 60px !important;
+}
+
+/* Replace that white split pane background with your navy gradient */
+#nc-root [class*="StyledSplitPane"] {
+  background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%) !important;
+}
+
+/* If a white card sits under the preview, make it transparent */
+#nc-root [class*="PreviewPane"],
+#nc-root [class*="PaneContent"] {
+  background: transparent !important;
 }
     </style>
     <script type="module" crossorigin src="../../assets/admin-CILe_ZNf.js"></script>
