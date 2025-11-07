@@ -327,27 +327,6 @@
         max-height: none !important;
       }
 
-      /* Force all Decap CMS containers to not use overflow scrolling */
-      div[class*="Pane"],
-      div[class*="pane"],
-      div[class*="Split"],
-      div[class*="split"],
-      div[class*="Container"],
-      div[class*="Wrapper"] {
-        overflow: visible !important;
-        height: auto !important;
-        max-height: none !important;
-      }
-
-      /* Disable flexbox heights that force scrolling */
-      [style*="height"],
-      [style*="max-height"],
-      [style*="overflow"] {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-      }
-
       /* Force the SplitPane component to not use fixed heights */
       .SplitPane {
         height: auto !important;
@@ -357,12 +336,39 @@
       .Resizer {
         display: none !important;
       }
+
+      /* Target the specific preview pane iframe container to remove overflow */
+      iframe[id*="preview"],
+      [class*="PreviewPaneFrame"],
+      [class*="PreviewPaneContent"],
+      div[class*="preview"] {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 100% !important;
+        max-height: none !important;
+      }
+
+      /* Force all right-side pane elements to full height without scroll */
+      .Pane2,
+      .Pane.vertical.Pane2,
+      div.Pane2 {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+      }
+
+      /* Override inline styles that Decap adds dynamically */
+      [class*="Pane"][style],
+      [class*="Split"][style] {
+        overflow: visible !important;
+        height: auto !important;
+      }
     </style>
   </head>
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- Changed from absolute path /admin/preview.js to relative path ./preview.js for Vite build -->
 <script type="module" src="/src/admin/preview.js"></script>
   </body>
 </html>
