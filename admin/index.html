@@ -260,6 +260,27 @@
 #nc-root [class*="PaneContent"] {
   background: transparent !important;
 }
+
+/* Extend total height & allow scrolling */
+#nc-root,
+#nc-root > div,
+#nc-root [class*="AppMainContainer"],
+#nc-root [class*="PaneContainer"],
+#nc-root [class*="SplitPane"],
+#nc-root [class*="EditorContainer"],
+#preview-pane {
+  min-height: calc(100vh - 60px) !important; /* account for top banner height */
+  height: auto !important;
+  overflow-y: auto !important; /* ensures both panes can scroll */
+  padding-bottom: 80px !important; /* adds breathing room at the bottom */
+}
+
+/* Also ensure inner content doesn't clip */
+#nc-root [class*="PreviewPaneContent"],
+#nc-root [class*="ControlPaneContainer"] {
+  padding-bottom: 80px !important;
+  overflow-y: auto !important;
+}
     </style>
   </head>
    <body>
