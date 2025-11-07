@@ -22,7 +22,7 @@ const HeroPreview = createClass({
       {
         style: {
           position: "relative",
-          minHeight: "100vh",
+          height: "600px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -54,7 +54,7 @@ const HeroPreview = createClass({
           "h1",
           {
             style: {
-              fontSize: "4rem",
+              fontSize: "3rem",
               fontWeight: "bold",
               marginBottom: "1.5rem",
               textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
@@ -66,7 +66,7 @@ const HeroPreview = createClass({
           "p",
           {
             style: {
-              fontSize: "1.5rem",
+              fontSize: "1.2rem",
               marginBottom: "2rem",
               maxWidth: "800px",
               textShadow: "1px 1px 2px rgba(0,0,0,0.5)",
