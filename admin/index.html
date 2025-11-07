@@ -3,26 +3,65 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎄 Highfield Road CMS</title>
+    <title>🎄 Christmas Lights CMS</title>
     <link rel="icon" href="/images/website-logo.jpg" />
 
+    <!-- Christmas-themed CMS styling -->
     <style>
-      /* 🌙 Base layout */
+      :root {
+        --christmas-navy: #0f172a;
+        --christmas-blue: #1e3a5f;
+        --christmas-gold: #fbbf24;
+        --christmas-red: #dc2626;
+        --christmas-green: #16a34a;
+        --snow-white: #f8fafc;
+      }
+
       body {
-        background: linear-gradient(180deg, #0b1221 0%, #1b2b3b 100%);
-        font-family: "Poppins", sans-serif;
-        color: #fff;
+        background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--snow-white);
         margin: 0;
+        padding: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 100vh;
+        height: 100vh;
         overflow: hidden;
+      }
+
+      /* Starry night */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          radial-gradient(2px 2px at 20% 30%, white, transparent),
+          radial-gradient(2px 2px at 60% 70%, white, transparent),
+          radial-gradient(1px 1px at 50% 50%, white, transparent),
+          radial-gradient(1px 1px at 80% 10%, white, transparent),
+          radial-gradient(2px 2px at 90% 60%, white, transparent),
+          radial-gradient(1px 1px at 33% 80%, white, transparent),
+          radial-gradient(1px 1px at 65% 20%, white, transparent);
+        background-size: 200% 200%;
+        animation: twinkle 3s ease-in-out infinite;
+        pointer-events: none;
+        opacity: 0.5;
+        z-index: 0;
+      }
+
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 0.2; }
       }
 
       header {
         text-align: center;
-        padding: 2rem 1rem 1rem;
+        z-index: 2;
+        padding: 1.5rem 1rem;
       }
 
       header img {
@@ -32,66 +71,25 @@
       }
 
       header h1 {
-        margin: 1rem 0 0.5rem;
-        color: #e11d48;
+        margin: 0.75rem 0 0.25rem;
+        color: var(--christmas-red);
       }
 
       header p {
-        color: #cbd5e1;
+        color: var(--snow-white);
         margin: 0;
       }
 
-      /* 🎁 CMS Container */
+      /* CMS iframe (prevents overlap & layout bugs) */
       iframe {
         border: none;
+        flex: 1;
         width: 100%;
         height: 100%;
-        flex: 1;
-        border-top: 2px solid rgba(255, 255, 255, 0.1);
-        background-color: #0f172a;
-      }
-
-      /* ✨ Layout fixes for Decap inside the iframe */
-      .nc-app,
-      .nc-root,
-      .nc-entryEditor,
-      .nc-entryEditor-controlPane,
-      .nc-entryEditor-previewPane {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-      }
-
-      /* Buttons */
-      button,
-      .nc-button,
-      .nc-toolbar-button {
-        background-color: #e11d48 !important;
-        color: #fff !important;
-        border: none !important;
-        border-radius: 8px !important;
-        font-weight: 600 !important;
-        transition: background 0.2s ease;
-      }
-
-      button:hover,
-      .nc-button:hover,
-      .nc-toolbar-button:hover {
-        background-color: #22c55e !important;
-      }
-
-      /* Scrollbar style inside Decap */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #334155;
-        border-radius: 4px;
+        background-color: var(--christmas-navy);
       }
     </style>
   </head>
-
   <body>
     <header>
       <img src="/images/website-logo.jpg" alt="Highfield Road Logo" />
@@ -99,7 +97,7 @@
       <p>🎁 Manage your website content below 🎁</p>
     </header>
 
-    <!-- 🧩 Load Decap CMS in an iframe for styling isolation -->
+    <!-- Decap CMS embedded safely -->
     <iframe src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.html"></iframe>
   </body>
 </html>
