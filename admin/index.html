@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎄 Christmas Lights CMS</title>
-    <link rel="icon" href="/images/website-logo.jpg" />
-
-    <!-- Christmas-themed CMS styling -->
+    <title>Christmas Lights CMS</title>
+    
+    <!-- Added custom Christmas-themed styling for the CMS -->
     <style>
       :root {
         --christmas-navy: #0f172a;
@@ -20,17 +19,9 @@
       body {
         background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: var(--snow-white);
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
       }
 
-      /* Starry night */
+      /* Starry night background effect */
       body::before {
         content: '';
         position: fixed;
@@ -38,7 +29,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image:
+        background-image: 
           radial-gradient(2px 2px at 20% 30%, white, transparent),
           radial-gradient(2px 2px at 60% 70%, white, transparent),
           radial-gradient(1px 1px at 50% 50%, white, transparent),
@@ -47,57 +38,163 @@
           radial-gradient(1px 1px at 33% 80%, white, transparent),
           radial-gradient(1px 1px at 65% 20%, white, transparent);
         background-size: 200% 200%;
+        background-position: 0% 0%;
         animation: twinkle 3s ease-in-out infinite;
         pointer-events: none;
-        opacity: 0.5;
+        opacity: 0.6;
         z-index: 0;
       }
 
       @keyframes twinkle {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 0.2; }
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 0.3; }
       }
 
-      header {
+      /* Christmas header banner */
+      #nc-root::before {
+        content: '🎄 Christmas Lights Display Editor 🎄';
+        display: block;
+        background: linear-gradient(90deg, var(--christmas-red) 0%, var(--christmas-green) 50%, var(--christmas-red) 100%);
+        color: white;
         text-align: center;
-        z-index: 2;
-        padding: 1.5rem 1rem;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
       }
 
-      header img {
-        width: 100px;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      /* Main CMS container styling */
+      [data-slate-editor="true"],
+      .css-1qzevvg,
+      .css-79elbk {
+        background-color: rgba(15, 23, 42, 0.95) !important;
+        backdrop-filter: blur(10px);
+        color: var(--snow-white) !important;
       }
 
-      header h1 {
-        margin: 0.75rem 0 0.25rem;
-        color: var(--christmas-red);
+      /* Sidebar styling */
+      aside,
+      [class*="SidebarContainer"] {
+        background-color: rgba(30, 58, 95, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-right: 2px solid var(--christmas-gold) !important;
       }
 
-      header p {
-        color: var(--snow-white);
-        margin: 0;
+      /* Navigation and buttons */
+      button,
+      [role="button"] {
+        background-color: var(--christmas-gold) !important;
+        color: var(--christmas-navy) !important;
+        border: none !important;
+        border-radius: 6px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
       }
 
-      /* CMS iframe (prevents overlap & layout bugs) */
+      button:hover,
+      [role="button"]:hover {
+        background-color: var(--christmas-red) !important;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.3) !important;
+      }
+
+      /* Input fields */
+      input,
+      textarea,
+      select {
+        background-color: rgba(248, 250, 252, 0.1) !important;
+        border: 2px solid var(--christmas-gold) !important;
+        color: var(--snow-white) !important;
+        border-radius: 6px !important;
+        padding: 8px !important;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--christmas-red) !important;
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2) !important;
+      }
+
+      /* Collection list items */
+      li,
+      [class*="CardLink"] {
+        background-color: rgba(248, 250, 252, 0.1) !important;
+        border: 1px solid var(--christmas-gold) !important;
+        border-radius: 8px !important;
+        margin-bottom: 10px !important;
+        transition: all 0.3s ease !important;
+      }
+
+      li:hover,
+      [class*="CardLink"]:hover {
+        background-color: rgba(251, 191, 36, 0.2) !important;
+        border-color: var(--christmas-red) !important;
+        transform: translateX(5px);
+      }
+
+      /* Text and labels */
+      label,
+      span,
+      p,
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--snow-white) !important;
+      }
+
+      /* Links */
+      a {
+        color: var(--christmas-gold) !important;
+      }
+
+      a:hover {
+        color: var(--christmas-red) !important;
+      }
+
+      /* Preview pane */
       iframe {
-        border: none;
-        flex: 1;
-        width: 100%;
-        height: 100%;
-        background-color: var(--christmas-navy);
+        border: 3px solid var(--christmas-gold) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
+      }
+
+      /* Save button special styling */
+      [class*="ToolbarButton"] {
+        background: linear-gradient(135deg, var(--christmas-green) 0%, var(--christmas-red) 100%) !important;
+        color: white !important;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--christmas-navy);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--christmas-gold);
+        border-radius: 6px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--christmas-red);
+      }
+
+      /* Welcome message */
+      [class*="AppHeader"] {
+        background: rgba(30, 58, 95, 0.95) !important;
+        border-bottom: 3px solid var(--christmas-gold) !important;
       }
     </style>
   </head>
   <body>
-    <header>
-      <img src="/images/website-logo.jpg" alt="Highfield Road Logo" />
-      <h1>Highfield Road Christmas Lights</h1>
-      <p>🎁 Manage your website content below 🎁</p>
-    </header>
-
-    <!-- Decap CMS embedded safely -->
-    <iframe src="/admin/decap.html"></iframe>
+    <!-- Include the script that builds the page and powers Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
