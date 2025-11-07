@@ -17,32 +17,30 @@
       }
 
       body {
-        background: linear-gradient(180deg, var(--christmas-navy) 0%, var(--christmas-blue) 100%);
+        background: linear-gradient(180deg, #1e3a5f 0%, #0f172a 100%);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
 
       /* Starry night background effect */
       body::before {
-        content: '';
+        content: '🎄 Christmas Lights Display Editor 🎄';
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-          radial-gradient(2px 2px at 20% 30%, white, transparent),
-          radial-gradient(2px 2px at 60% 70%, white, transparent),
-          radial-gradient(1px 1px at 50% 50%, white, transparent),
-          radial-gradient(1px 1px at 80% 10%, white, transparent),
-          radial-gradient(2px 2px at 90% 60%, white, transparent),
-          radial-gradient(1px 1px at 33% 80%, white, transparent),
-          radial-gradient(1px 1px at 65% 20%, white, transparent);
-        background-size: 200% 200%;
-        background-position: 0% 0%;
+        right: 0;
+        background: linear-gradient(90deg, var(--christmas-red) 0%, var(--christmas-green) 50%, var(--christmas-red) 100%);
+        color: white;
+        text-align: center;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        z-index: 99999;
         animation: twinkle 3s ease-in-out infinite;
         pointer-events: none;
         opacity: 0.6;
-        z-index: 0;
       }
 
       @keyframes twinkle {
@@ -51,18 +49,9 @@
       }
 
       /* Removed sticky positioning and z-index that was breaking layout */
-      #nc-root::before {
-        content: '🎄 Christmas Lights Display Editor 🎄';
-        display: block;
-        background: linear-gradient(90deg, var(--christmas-red) 0%, var(--christmas-green) 50%, var(--christmas-red) 100%);
-        color: white;
-        text-align: center;
-        padding: 15px;
-        font-size: 20px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        margin-bottom: 10px;
+      #nc-root {
+        margin-top: 50px;
+        position: relative;
       }
 
       /* Main CMS container styling */
@@ -204,9 +193,13 @@
         border-bottom: 3px solid var(--christmas-gold) !important;
       }
 
-      /* Simplified positioning to prevent layout issues */
-      #nc-root {
-        position: relative;
+      /* Subtle golden accent on buttons */
+      button[class*="Button"] {
+        transition: transform 0.2s ease;
+      }
+
+      button[class*="Button"]:hover {
+        transform: translateY(-1px);
       }
     </style>
   </head>
