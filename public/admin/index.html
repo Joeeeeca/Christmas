@@ -278,7 +278,7 @@
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- Added custom preview template script to show styled previews instead of raw text -->
-    <script src="/admin/preview.js" type="module"></script>
+    <!-- Changed from absolute path /admin/preview.js to relative path ./preview.js for Vite build -->
+    <script src="./preview.js" type="module"></script>
   </body>
 </html>
