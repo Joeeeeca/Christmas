@@ -5,23 +5,25 @@ import { Heart, Facebook, Sparkles } from "lucide-react";
 import { useFadeInOnScroll } from "@/lib/useFadeInOnScroll";
 import { FairyLights } from "./fairy-lights";
 import { Helmet } from "react-helmet-async";
-import donationData from "@/content/donation.json"; // ✅ import CMS data
+import donationData from "@/content/donation.json"; // CMS data
 
 export default function DonationSocialSection() {
   const [donationError, setDonationError] = useState(false);
   const [facebookLoaded, setFacebookLoaded] = useState(false);
 
-useEffect(() => {
-  const script = document.createElement("script")
-  script.src = "https://widgets.sociablekit.com/facebook-page-posts/widget.js"
-  script.defer = true
-  script.onload = () => setFacebookLoaded(true)
-  document.body.appendChild(script)
+  // Load SociableKIT script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://widgets.sociablekit.com/facebook-page-posts/widget.js";
+    script.defer = true;
+    script.onload = () => setFacebookLoaded(true);
+    document.body.appendChild(script);
 
-  return () => {
-    document.body.removeChild(script) // ✅ returns void explicitly
-  }
-}, [])
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const title = useFadeInOnScroll();
   const donationCard = useFadeInOnScroll();
@@ -38,6 +40,7 @@ useEffect(() => {
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-20">
+        {/* Title */}
         <div
           ref={title.ref}
           className={`flex flex-col items-center transition-all duration-700 ${
@@ -46,7 +49,9 @@ useEffect(() => {
         >
           <div className="flex flex-wrap items-center justify-center gap-3 mb-4 text-center">
             <Sparkles className="w-8 h-8 text-christmas-gold animate-pulse" />
-            <h2 className="text-4xl font-bold text-white">{donationData.title}</h2>
+            <h2 className="text-4xl font-bold text-white">
+              {donationData.title}
+            </h2>
             <Sparkles className="w-8 h-8 text-christmas-gold animate-pulse" />
           </div>
         </div>
@@ -61,13 +66,21 @@ useEffect(() => {
           >
             <div className="flex items-center gap-3 mb-4">
               <Heart className="w-6 h-6 text-red-400" />
-              <h3 className="text-2xl font-bold text-white">{donationData.donationTitle}</h3>
+              <h3 className="text-2xl font-bold text-white">
+                {donationData.donationTitle}
+              </h3>
             </div>
-            <p className="text-slate-300 mb-6">{donationData.donationText}</p>
+            <p className="text-slate-300 mb-6">
+              {donationData.donationText}
+            </p>
 
             <div className="relative h-[400px] rounded-xl overflow-hidden border border-red-500/30">
               {donationError ? (
-                <a href={donationData.donationUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={donationData.donationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     src="/images/donation-amount.jpg"
                     alt="GoFundMe fallback"
@@ -85,7 +98,7 @@ useEffect(() => {
             </div>
           </div>
 
-          {/* 💙 Facebook */}
+          {/* 💙 Facebook Updates */}
           <div
             ref={facebookCard.ref}
             className={`rounded-2xl p-6 bg-slate-800/60 backdrop-blur-lg border border-blue-500/30 transition-all duration-700 ${
@@ -100,6 +113,7 @@ useEffect(() => {
               Follow our Facebook page for the latest news and photos from the display.
             </p>
 
+            {/* Fallback until SociableKIT widget loads */}
             {!facebookLoaded ? (
               <a
                 href={donationData.facebookUrl}
@@ -113,11 +127,16 @@ useEffect(() => {
                 />
               </a>
             ) : (
-              <div className="w-full max-h-[500px] overflow-y-auto rounded-md">
-                <div
-                  className="sk-ww-facebook-page-posts w-full"
-                  data-embed-id="25615336"
-                ></div>
+              <div className="w-full rounded-xl overflow-hidden">
+                <iframe
+                  src="https://widgets.sociablekit.com/facebook-page-posts/iframe/25622068"
+                  frameBorder="0"
+                  style={{
+                    width: "100%",
+                    height: "1000px",
+                    border: "none",
+                  }}
+                ></iframe>
               </div>
             )}
           </div>
