@@ -56,92 +56,106 @@ export default function DonationSocialSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8">
-          {/* ❤️ Donation Card */}
-          <div
-            ref={donationCard.ref}
-            className={`rounded-2xl p-6 bg-slate-800/60 backdrop-blur-lg border border-red-500/30 transition-all duration-700 ${
-              donationCard.isVisible ? "fade-in-up" : "opacity-0 translate-y-6"
-            }`}
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <Heart className="w-6 h-6 text-red-400" />
-              <h3 className="text-2xl font-bold text-white">
-                {donationData.donationTitle}
-              </h3>
-            </div>
-            <p className="text-slate-300 mb-6">
-              {donationData.donationText}
-            </p>
+<div className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8">
+  {/* ❤️ Donation Card */}
+  <div
+    ref={donationCard.ref}
+    className={`rounded-2xl p-6 bg-slate-800/60 backdrop-blur-lg border border-red-500/30 transition-all duration-700 ${
+      donationCard.isVisible ? "fade-in-up" : "opacity-0 translate-y-6"
+    }`}
+  >
+    <div className="flex items-center gap-3 mb-4">
+      <Heart className="w-6 h-6 text-red-400" />
+      <h3 className="text-2xl font-bold text-white">
+        {donationData.donationTitle}
+      </h3>
+    </div>
 
-            <div className="relative h-[400px] rounded-xl overflow-hidden border border-red-500/30">
-              {donationError ? (
-                <a
-                  href={donationData.donationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="/images/donation-amount.jpg"
-                    alt="GoFundMe fallback"
-                    className="w-full h-full object-cover"
-                  />
-                </a>
-              ) : (
-                <iframe
-                  src={donationData.donationUrl}
-                  className="w-full h-full"
-                  title="GoFundMe Widget"
-                  onError={() => setDonationError(true)}
-                />
-              )}
-            </div>
-          </div>
+    <p className="text-slate-300 mb-6">{donationData.donationText}</p>
 
-          {/* 💙 Facebook Updates */}
-          <div
-            ref={facebookCard.ref}
-            className={`rounded-2xl p-6 bg-slate-800/60 backdrop-blur-lg border border-blue-500/30 transition-all duration-700 ${
-              facebookCard.isVisible ? "fade-in-up" : "opacity-0 translate-y-6"
-            }`}
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <Facebook className="w-6 h-6 text-blue-400" />
-              <h3 className="text-2xl font-bold text-white">Latest Updates</h3>
-            </div>
-            <p className="text-slate-300 mb-6">
-              Follow our Facebook page for the latest news and photos from the display.
-            </p>
+    <div
+      className="rounded-xl overflow-hidden border border-red-500/30"
+      style={{
+        maxHeight: "550px",     // ⬅ MATCH FACEBOOK HEIGHT
+        overflowY: "auto",
+        scrollbarWidth: "thin",
+      }}
+    >
+      {donationError ? (
+        <a
+          href={donationData.donationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/images/donation-amount.jpg"
+            alt="GoFundMe fallback"
+            className="w-full h-full object-cover"
+          />
+        </a>
+      ) : (
+        <iframe
+          src={donationData.donationUrl}
+          className="w-full"
+          style={{ height: "1000px", border: "none" }} // allow scroll inside container
+          title="GoFundMe Widget"
+          onError={() => setDonationError(true)}
+        />
+      )}
+    </div>
+  </div>
 
-            {/* Fallback until SociableKIT widget loads */}
-            {!facebookLoaded ? (
-              <a
-                href={donationData.facebookUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/images/facebook-preview.png"
-                  alt="Facebook preview"
-                  className="w-full rounded-xl"
-                />
-              </a>
-            ) : (
-              <div className="w-full rounded-xl overflow-hidden">
-                <iframe
-                  src="https://widgets.sociablekit.com/facebook-page-posts/iframe/25622068"
-                  frameBorder="0"
-                  style={{
-                    width: "100%",
-                    height: "1000px",
-                    border: "none",
-                  }}
-                ></iframe>
-              </div>
-            )}
-          </div>
-        </div>
+  {/* 💙 Facebook Updates */}
+  <div
+    ref={facebookCard.ref}
+    className={`rounded-2xl p-6 bg-slate-800/60 backdrop-blur-lg border border-blue-500/30 transition-all duration-700 ${
+      facebookCard.isVisible ? "fade-in-up" : "opacity-0 translate-y-6"
+    }`}
+  >
+    <div className="flex items-center gap-3 mb-4">
+      <Facebook className="w-6 h-6 text-blue-400" />
+      <h3 className="text-2xl font-bold text-white">Latest Updates</h3>
+    </div>
+
+    <p className="text-slate-300 mb-6">
+      Follow our Facebook page for the latest news and photos from the display.
+    </p>
+
+    {!facebookLoaded ? (
+      <a
+        href={donationData.facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/images/facebook-preview.png"
+          alt="Facebook preview"
+          className="w-full rounded-xl"
+        />
+      </a>
+    ) : (
+      <div
+        className="w-full rounded-xl overflow-hidden border border-blue-500/20"
+        style={{
+          maxHeight: "550px",
+          overflowY: "auto",
+          scrollbarWidth: "thin",
+        }}
+      >
+        <iframe
+          src="https://widgets.sociablekit.com/facebook-page-posts/iframe/25622068"
+          frameBorder="0"
+          style={{
+            width: "100%",
+            height: "1000px",
+            border: "none",
+          }}
+        ></iframe>
       </div>
+    )}
+  </div>
+</div>
+</div>
     </section>
   );
 }
