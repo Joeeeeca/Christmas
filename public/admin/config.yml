@@ -7,6 +7,8 @@ backend:
   publish_mode: simple
   deploy_url: https://api.vercel.com/v1/integrations/deploy/prj_TlIB6bE2Ah8Pk5G4qYCq1fzjB1MO/gI6um08cbF
 
+  site_url: https://highfieldroadlights.co.uk
+
 # ✅ Disable preview pane
 editor:
   preview: false
