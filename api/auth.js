@@ -1,15 +1,32 @@
-export default function handler(req, res) {
-  const clientId = process.env.GITHUB_CLIENT_ID;
-  const redirectUri = `${process.env.VERCEL_URL}/api/callback`;
+export default async function handler(req, res) {
+  const client_id = process.env.GITHUB_CLIENT_ID;
+  const client_secret = process.env.GITHUB_CLIENT_SECRET;
 
-  if (!clientId) {
-    return res.status(500).json({ error: "Missing GITHUB_CLIENT_ID" });
+  const { code } = req.query;
+
+  if (!code) {
+    return res.status(400).json({ error: "Missing ?code parameter" });
   }
 
-  const url = new URL("https://github.com/login/oauth/authorize");
-  url.searchParams.set("client_id", clientId);
-  url.searchParams.set("redirect_uri", `https://${redirectUri}`);
-  url.searchParams.set("scope", "repo");
+  // Exchange code for token
+  const response = await fetch(
+    `https://github.com/login/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&code=${code}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
 
-  return res.redirect(url.toString());
+  const data = await response.json();
+
+  if (data.error) {
+    return res.status(400).json({ error: data.error_description });
+  }
+
+  // Redirect back to CMS with token
+  return res.redirect(
+    `/admin/#access_token=${data.access_token}`
+  );
 }
