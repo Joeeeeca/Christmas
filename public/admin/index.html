@@ -7,11 +7,15 @@
   </head>
 
   <body>
+    <!-- REQUIRED: LOAD CONFIG FILE -->
+    <script src="/admin/config.yml" type="text/yaml"></script>
+
+    <!-- REQUIRED: INIT CMS AUTOMATICALLY -->
     <script>
       window.CMS_MANUAL_INIT = false;
     </script>
 
-    <!-- LOAD DECAP -->
+    <!-- LOAD DECAP CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
