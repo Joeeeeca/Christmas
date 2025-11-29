@@ -3,11 +3,11 @@ backend:
   repo: Joeeeeca/Christmas # your actual GitHub repo
   branch: main
   base_url: https://christmas-lights-cms.vercel.app # your actual Vercel URL
-  auth_endpoint: /api/auth
+  auth_endpoint: auth
   publish_mode: simple
   deploy_url: https://api.vercel.com/v1/integrations/deploy/prj_TlIB6bE2Ah8Pk5G4qYCq1fzjB1MO/gI6um08cbF
 
-  site_url: https://highfieldroadlights.co.uk
+  site_url: https://highfieldroadlights.com
 
 # ✅ Disable preview pane
 editor:
