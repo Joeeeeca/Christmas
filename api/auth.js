@@ -1,32 +1,17 @@
 export default async function handler(req, res) {
-  const client_id = process.env.GITHUB_CLIENT_ID;
-  const client_secret = process.env.GITHUB_CLIENT_SECRET;
+  const { provider } = req.query;
 
-  const { code } = req.query;
-
-  if (!code) {
-    return res.status(400).json({ error: "Missing ?code parameter" });
+  if (provider !== "github") {
+    return res.status(400).json({ error: "Invalid provider" });
   }
 
-  // Exchange code for token
-  const response = await fetch(
-    `https://github.com/login/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&code=${code}`,
-    {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-    }
-  );
+  const clientId = process.env.GITHUB_CLIENT_ID;
+  const redirectUri = `${process.env.SITE_URL}/api/callback`;
 
-  const data = await response.json();
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?` +
+    `client_id=${clientId}` +
+    `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+    `&scope=repo`;
 
-  if (data.error) {
-    return res.status(400).json({ error: data.error_description });
-  }
-
-  // Redirect back to CMS with token
-  return res.redirect(
-    `/admin/#access_token=${data.access_token}`
-  );
+  return res.redirect(githubAuthUrl);
 }
