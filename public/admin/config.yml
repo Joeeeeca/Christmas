@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Joeeeeca/Christmas
   branch: main
-  base_url: https://christmas-lights-cms.vercel.app
+  base_url: https://christmas-lights-86tg0732t-joe-capons-projects.vercel.app
   auth_endpoint: /api/auth
 
 media_folder: "public/images"
