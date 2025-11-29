@@ -5,6 +5,8 @@ backend:
   base_url: https://christmas-lights-86tg0732t-joe-capons-projects.vercel.app
   auth_endpoint: /api/auth
 
+  site_url: https://christmas-lights-86tg0732t-joe-capons-projects.vercel.app
+
 media_folder: "public/images"
 public_folder: "/images"
 
