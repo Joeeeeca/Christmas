@@ -5,7 +5,6 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  publicDir: "static",
 
   resolve: {
     alias: {
