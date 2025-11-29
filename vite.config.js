@@ -6,6 +6,12 @@ import path from "path";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
 
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+
   build: {
     copyPublicDir: true,
   },
@@ -13,7 +19,7 @@ export default defineConfig({
   server: {
     historyApiFallback: {
       rewrites: [
-        // Allow admin to be served as raw static files
+        // Serve admin CMS normally, not through React router
         { from: /^\/admin\/.*$/, to: "/admin/index.html" }
       ],
     },
