@@ -6,6 +6,7 @@ import path from 'path'
 export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -17,25 +18,14 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        admin: path.resolve(__dirname, 'public/admin/index.html'),
+        admin: path.resolve(__dirname, 'admin/index.html'),
       },
     },
   },
 
   server: {
     fs: {
-      allow: [__dirname, path.resolve(__dirname, 'public')],
-    },
-
-    historyApiFallback: {
-      rewrites: [
-        // Serve EXACT admin file
-        { from: /^\/admin\/index\.html$/, to: '/admin/index.html' },
-
-        // Any admin sub-path should bypass React routing
-        { from: /^\/admin\/.*$/, to: '/admin/index.html' },
-      ],
-      disableDotRule: true,
+      allow: [__dirname],   // keep this simple
     },
   },
 
