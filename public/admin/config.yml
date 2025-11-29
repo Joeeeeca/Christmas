@@ -2,10 +2,10 @@ backend:
   name: github
   repo: Joeeeeca/Christmas
   branch: main
-  base_url: https://christmas-lights-86tg0732t-joe-capons-projects.vercel.app
+  base_url: https://highfieldroadchristmaslights.com
   auth_endpoint: /api/auth
 
-  site_url: https://christmas-lights-86tg0732t-joe-capons-projects.vercel.app
+  site_url: https://highfieldroadchristmaslights.com
 
 media_folder: "public/images"
 public_folder: "/images"
