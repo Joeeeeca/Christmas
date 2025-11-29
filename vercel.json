@@ -2,11 +2,8 @@
   "functions": {
     "api/**/*.js": {
       "memory": 128,
-      "maxDuration": 10
+      "maxDuration": 10,
+      "runtime": "nodejs18.x"
     }
-  },
-  "env": {
-    "GITHUB_CLIENT_ID": "GITHUB_CLIENT_ID",
-    "GITHUB_CLIENT_SECRET": "GITHUB_CLIENT_SECRET"
   }
 }
