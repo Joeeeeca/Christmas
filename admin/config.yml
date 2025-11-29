@@ -1,44 +1,37 @@
 backend:
   name: github
-  repo: Joeeeeca/Christmas # your actual GitHub repo
+  repo: Joeeeeca/Christmas
   branch: main
-  base_url: https://christmas-lights-cms.vercel.app # your actual Vercel URL
+  base_url: https://highfieldroadchristmaslights.com
   auth_endpoint: /api/auth
-  publish_mode: simple
-  deploy_url: https://api.vercel.com/v1/integrations/deploy/prj_TlIB6bE2Ah8Pk5G4qYCq1fzjB1MO/gI6um08cbF
 
-  site_url: https://highfieldroadlights.co.uk
-
-# ✅ Disable preview pane
-editor:
-  preview: false
+site_url: https://highfieldroadchristmaslights.com
 
 media_folder: "public/images"
 public_folder: "/images"
 
 collections:
-  - name: "sections"
+  - name: sections
     label: "Website Sections"
     files:
+
       # === HERO SECTION ===
-      - file: "src/content/hero.json"
+      - name: hero
         label: "Hero Settings"
-        name: "hero"
-        widget: "object"
-        collapsed: true
+        file: "src/content/hero.json"
         fields:
-          - { label: "Title", name: "title", widget: "string", hint: "Main title shown on the homepage hero section" }
-          - { label: "Text", name: "text", widget: "text", hint: "Short welcome message displayed below the headline" }
-          - { label: "Background Image", name: "backgroundImage", widget: "image", hint: "Hero background photo" }
-          - { label: "Button 1 Text", name: "button1Text", widget: "string", hint: "Label for the first button" }
-          - { label: "Button 1 Link", name: "button1Link", widget: "string", hint: "Anchor link or URL for the first button" }
-          - { label: "Button 2 Text", name: "button2Text", widget: "string", hint: "Label for the second button" }
-          - { label: "Button 2 Link", name: "button2Link", widget: "string", hint: "Anchor link or URL for the second button" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Background Image", name: "backgroundImage", widget: "image" }
+          - { label: "Button 1 Text", name: "button1Text", widget: "string" }
+          - { label: "Button 1 Link", name: "button1Link", widget: "string" }
+          - { label: "Button 2 Text", name: "button2Text", widget: "string" }
+          - { label: "Button 2 Link", name: "button2Link", widget: "string" }
 
       # === ABOUT SECTION ===
-      - file: "src/content/about.json"
+      - name: about
         label: "About Section"
-        name: "about"
+        file: "src/content/about.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - label: "Sections"
@@ -51,9 +44,9 @@ collections:
               - { label: "Text", name: "text", widget: "text" }
 
       # === GALLERY SECTION ===
-      - file: "src/content/gallery.json"
+      - name: gallery
         label: "Gallery Section"
-        name: "gallery"
+        file: "src/content/gallery.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -66,9 +59,9 @@ collections:
               - { label: "Alt Text", name: "alt", widget: "string" }
 
       # === VISIT SECTION ===
-      - file: "src/content/visit.json"
+      - name: visit
         label: "Visit Section"
-        name: "visit"
+        file: "src/content/visit.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Visiting Hours Image", name: "visitingHoursImage", widget: "image" }
@@ -76,9 +69,9 @@ collections:
           - { label: "Fallback Image", name: "fallbackImage", widget: "image" }
 
       # === DONATION SECTION ===
-      - file: "src/content/donation.json"
+      - name: donation
         label: "Donation Section"
-        name: "donation"
+        file: "src/content/donation.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Donation Title", name: "donationTitle", widget: "string" }
