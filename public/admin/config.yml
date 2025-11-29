@@ -1,0 +1,28 @@
+backend:
+  name: github
+  repo: Joeeeeca/Christmas
+  branch: main
+
+  # Your GitHub OAuth App credentials
+  auth_type: implicit
+  app_id: Ov23ligTGMqm9K37Lwwt
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: sections
+    label: "Sections"
+    files:
+      - file: "src/content/hero.json"
+        label: "Hero"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Text, name: text, widget: text }
+          - { label: Background, name: backgroundImage, widget: image }
+
+      - file: "src/content/about.json"
+        label: About
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Content, name: content, widget: text }
