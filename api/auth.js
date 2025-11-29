@@ -1,11 +1,15 @@
 export default function handler(req, res) {
-  const { query } = req;
+  const clientId = process.env.GITHUB_CLIENT_ID;
+  const redirectUri = `${process.env.VERCEL_URL}/api/callback`;
 
-  if (!query.code) {
-    return res.status(400).json({ error: "Missing code query parameter" });
+  if (!clientId) {
+    return res.status(500).json({ error: "Missing GITHUB_CLIENT_ID" });
   }
 
-  return res.redirect(
-    `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}&code=${query.code}`
-  );
+  const url = new URL("https://github.com/login/oauth/authorize");
+  url.searchParams.set("client_id", clientId);
+  url.searchParams.set("redirect_uri", `https://${redirectUri}`);
+  url.searchParams.set("scope", "repo");
+
+  return res.redirect(url.toString());
 }
