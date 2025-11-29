@@ -1,9 +1,14 @@
-import { OAuth } from "@netlify/netlify-cms-oauth-provider";
+export default async function handler(req, res) {
+  const { provider } = req.query;
 
-const oauth = new OAuth({
-  // Vercel provides these automatically:
-  clientId: process.env.GITHUB_CLIENT_ID,
-  clientSecret: process.env.GITHUB_CLIENT_SECRET,
-});
+  if (provider !== "github") {
+    return res.status(400).json({ error: "Invalid provider" });
+  }
 
-export default oauth.authorize;
+  const clientId = process.env.GITHUB_CLIENT_ID;
+  const redirectUrl = `${process.env.VERCEL_URL || "https://christmas-lights-cms.vercel.app"}/api/callback`;
+
+  const authorizeUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=repo`;
+
+  return res.redirect(authorizeUrl);
+}
