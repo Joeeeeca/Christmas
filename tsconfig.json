@@ -23,5 +23,5 @@
     },
        "types": ["@types/zen-observable"]
   },
-  "include": ["src"]
+  "include": ["src", "public/admin/cms.js"]
 }
