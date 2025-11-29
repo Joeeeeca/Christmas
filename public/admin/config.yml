@@ -2,9 +2,8 @@ backend:
   name: github
   repo: Joeeeeca/Christmas
   branch: main
-
-  # Your GitHub OAuth App credentials
-  auth_type: implicit
+  base_url: https://christmas-lights-cms.vercel.app
+  auth_endpoint: /api/auth
   app_id: Ov23ligTGMqm9K37Lwwt
 
 media_folder: "public/images"
