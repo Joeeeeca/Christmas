@@ -5,7 +5,7 @@ backend:
   base_url: https://highfieldroadchristmaslights.com
   auth_endpoint: /api/auth
 
-  site_url: https://highfieldroadchristmaslights.com
+site_url: https://highfieldroadchristmaslights.com
 
 media_folder: "public/images"
 public_folder: "/images"
