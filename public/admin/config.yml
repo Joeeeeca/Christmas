@@ -2,79 +2,58 @@ backend:
   name: github
   repo: Joeeeeca/Christmas
   branch: main
-  base_url: https://highfieldroadchristmaslights.com
+  base_url: https://christmas-lights-cms.vercel.app
   auth_endpoint: /api/auth
 
-site_url: https://highfieldroadchristmaslights.com
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
-media_folder: "public/images"
-public_folder: "/images"
+editor:
+  preview: false
 
 collections:
-  - name: sections
-    label: "Website Sections"
+  - name: "settings"
+    label: "Site Settings"
     files:
-
-      # === HERO SECTION ===
-      - name: hero
-        label: "Hero Settings"
-        file: "src/content/hero.json"
+      - name: "hero"
+        label: "Hero Section"
+        file: "content/hero.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Subtitle", name: "subtitle", widget: "text" }
           - { label: "Background Image", name: "backgroundImage", widget: "image" }
-          - { label: "Button 1 Text", name: "button1Text", widget: "string" }
-          - { label: "Button 1 Link", name: "button1Link", widget: "string" }
-          - { label: "Button 2 Text", name: "button2Text", widget: "string" }
-          - { label: "Button 2 Link", name: "button2Link", widget: "string" }
 
-      # === ABOUT SECTION ===
-      - name: about
+      - name: "about"
         label: "About Section"
-        file: "src/content/about.json"
+        file: "content/about.json"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            summary: "{{fields.heading}}"
-            fields:
-              - { label: "Icon", name: "icon", widget: "select", options: ["star", "gift", "sparkles"] }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
+          - { label: "Your Name", name: "name", widget: "string" }
+          - { label: "Introduction", name: "introduction", widget: "text" }
+          - { label: "Charity Name", name: "charityName", widget: "string" }
+          - { label: "Why We Do This", name: "whyWeDoThis", widget: "text" }
+          - { label: "Display Description", name: "displayDescription", widget: "text" }
 
-      # === GALLERY SECTION ===
-      - name: gallery
-        label: "Gallery Section"
-        file: "src/content/gallery.json"
+      - name: "visit"
+        label: "Visit Information"
+        file: "content/visit.json"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - label: "Images"
-            name: "images"
-            widget: "list"
-            summary: "{{fields.alt}}"
-            fields:
-              - { label: "Image", name: "src", widget: "image" }
-              - { label: "Alt Text", name: "alt", widget: "string" }
+          - { label: "Display Times Image", name: "displayTimesImage", widget: "image" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Google Maps Embed URL", name: "mapEmbedUrl", widget: "string" }
 
-      # === VISIT SECTION ===
-      - name: visit
-        label: "Visit Section"
-        file: "src/content/visit.json"
+      - name: "social"
+        label: "Social & Donations"
+        file: "content/social.json"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Visiting Hours Image", name: "visitingHoursImage", widget: "image" }
-          - { label: "Map Embed URL", name: "mapEmbedUrl", widget: "string" }
-          - { label: "Fallback Image", name: "fallbackImage", widget: "image" }
+          - { label: "JustGiving URL", name: "justGivingUrl", widget: "string" }
+          - { label: "Facebook Page URL", name: "facebookUrl", widget: "string" }
 
-      # === DONATION SECTION ===
-      - name: donation
-        label: "Donation Section"
-        file: "src/content/donation.json"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Donation Title", name: "donationTitle", widget: "string" }
-          - { label: "Donation Text", name: "donationText", widget: "text" }
-          - { label: "Donation URL", name: "donationUrl", widget: "string" }
-          - { label: "Facebook URL", name: "facebookUrl", widget: "string" }
+  - name: "gallery"
+    label: "Gallery Images"
+    folder: "content/gallery"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Caption", name: "caption", widget: "string", required: false }
+      - { label: "Order", name: "order", widget: "number", default: 0 }

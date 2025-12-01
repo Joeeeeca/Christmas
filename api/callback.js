@@ -1,32 +1,30 @@
-export default async function handler(req, res) {
-  const { code } = req.query;
+export default function handler(req, res) {
+  // This handles the OAuth callback and sends the code back to the CMS
+  const { code } = req.query
 
   if (!code) {
-    return res.status(400).json({ error: "Missing code query parameter" });
+    return res.status(400).send("Missing authorization code")
   }
 
-  const clientId = process.env.GITHUB_CLIENT_ID;
-  const clientSecret = process.env.GITHUB_CLIENT_SECRET;
-
-  const response = await fetch("https://github.com/login/oauth/access_token", {
-    method: "POST",
-    headers: { Accept: "application/json" },
-    body: new URLSearchParams({
-      client_id: clientId,
-      client_secret: clientSecret,
-      code,
-    }),
-  });
-
-  const data = await response.json();
-
-  if (data.error) {
-    return res.status(400).json(data);
-  }
-
-  // Redirect back to Decap CMS
-  const token = data.access_token;
-  const cmsRedirect = `/admin/#access_token=${token}&token_type=bearer`;
-
-  return res.redirect(cmsRedirect);
+  // Send the code back to the CMS window
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Authorizing...</title>
+      </head>
+      <body>
+        <script>
+          if (window.opener) {
+            window.opener.postMessage(
+              'authorization:github:success:${JSON.stringify({ code })}',
+              window.location.origin
+            );
+            window.close();
+          }
+        </script>
+        <p>Authorization successful! This window should close automatically.</p>
+      </body>
+    </html>
+  `)
 }

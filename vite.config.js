@@ -16,13 +16,4 @@ export default defineConfig({
     copyPublicDir: true,
     emptyOutDir: false
   },
-
-  server: {
-    historyApiFallback: {
-      rewrites: [
-        // Serve admin CMS normally, not through React router
-        { from: /^\/admin\/.*$/, to: "/admin/index.html" }
-      ],
-    },
-  },
 });
