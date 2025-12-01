@@ -1,12 +1,10 @@
 export default function handler(req, res) {
-  // This handles the OAuth callback and sends the code back to the CMS
-  const { code } = req.query
+  const { code } = req.query;
 
   if (!code) {
-    return res.status(400).send("Missing authorization code")
+    return res.status(400).send("Missing authorization code");
   }
 
-  // Send the code back to the CMS window
   res.send(`
     <!DOCTYPE html>
     <html>
@@ -16,11 +14,9 @@ export default function handler(req, res) {
       <body>
         <script>
           if (window.opener) {
-window.opener.postMessage(
-  'authorization:github:success:${JSON.stringify({ code })}',
-  '*'
-);
-
+            window.opener.postMessage(
+              'authorization:github:success:${JSON.stringify({ code })}',
+              '*'
             );
             window.close();
           }
@@ -28,5 +24,5 @@ window.opener.postMessage(
         <p>Authorization successful! This window should close automatically.</p>
       </body>
     </html>
-  `)
+  `);
 }
