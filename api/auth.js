@@ -8,14 +8,20 @@ export default async function handler(req, res) {
     return res.status(200).end()
   }
 
-  const { code, provider } = req.query
+  const { code } = req.query
 
   if (!code) {
-    return res.status(400).json({ error: "Missing code parameter" })
+    // No code means we need to start the OAuth flow - redirect to GitHub
+    const clientId = process.env.GITHUB_CLIENT_ID
+    const redirectUri = `${process.env.OAUTH_CALLBACK_URL || "https://christmas-lights-cms.vercel.app"}/api/callback`
+    const scope = "repo,user"
+
+    const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scope}`
+
+    return res.redirect(authUrl)
   }
 
   try {
-    // Exchange code for access token
     const tokenResponse = await fetch("https://github.com/login/oauth/access_token", {
       method: "POST",
       headers: {
@@ -35,11 +41,30 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: data.error_description || data.error })
     }
 
-    // Return token in the format Decap CMS expects
-    res.status(200).json({
-      token: data.access_token,
-      provider: "github",
-    })
+    // Return HTML that sends the token back to Decap CMS
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+        <head><title>Authorizing...</title></head>
+        <body>
+          <script>
+            (function() {
+              function receiveMessage(e) {
+                console.log("receiveMessage %o", e);
+                window.opener.postMessage(
+                  'authorization:github:success:${JSON.stringify({ token: data.access_token, provider: "github" })}',
+                  e.origin
+                );
+                window.removeEventListener("message", receiveMessage, false);
+              }
+              window.addEventListener("message", receiveMessage, false);
+              window.opener.postMessage("authorizing:github", "*");
+            })();
+          </script>
+          <p>Authorizing...</p>
+        </body>
+      </html>
+    `)
   } catch (error) {
     console.error("OAuth error:", error)
     res.status(500).json({ error: "Authentication failed" })
