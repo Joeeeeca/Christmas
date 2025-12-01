@@ -17,7 +17,7 @@ collections:
     files:
       - name: "hero"
         label: "Hero Section"
-        file: "content/hero.json"
+        file: "src/content/hero.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Text", name: "text", widget: "text" }
@@ -29,7 +29,7 @@ collections:
 
       - name: "about"
         label: "About Section"
-        file: "content/about.json"
+        file: "src/content/about.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - label: "Sections"
@@ -42,7 +42,7 @@ collections:
 
       - name: "gallery"
         label: "Photo Gallery"
-        file: "content/gallery.json"
+        file: "src/content/gallery.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -55,7 +55,7 @@ collections:
 
       - name: "visit"
         label: "Visit Information"
-        file: "content/visit.json"
+        file: "src/content/visit.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Visiting Hours Image", name: "visitingHoursImage", widget: "image" }
@@ -64,7 +64,7 @@ collections:
 
       - name: "donation"
         label: "Donations & Social"
-        file: "content/donation.json"
+        file: "src/content/donation.json"
         fields:
           - { label: "Section Title", name: "title", widget: "string" }
           - { label: "Donation Title", name: "donationTitle", widget: "string" }
