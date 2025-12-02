@@ -3,28 +3,36 @@
   "subtitle": "Take a peek at our festive display",
   "images": [
     {
-      "src": "/images/about-image.jpg",
-      "alt": "Christmas lights display - front view"
+      "src": "/images/uploads/6.jpeg",
+      "alt": "Highfield Road Christmas Lights"
     },
     {
-      "src": "/images/donation-amount.jpg",
-      "alt": "Colorful yard decorations"
+      "src": "/images/uploads/1.jpeg",
+      "alt": "Highfield Road Christmas Lights"
     },
     {
-      "src": "/images/thumbnail1.jpg",
-      "alt": "Rooftop light display"
+      "src": "/images/uploads/14.jpeg",
+      "alt": "Highfield Road Christmas Lights"
     },
     {
-      "src": "/images/thumbnail2.jpg",
-      "alt": "Outdoor Christmas tree"
+      "src": "/images/uploads/11.jpeg",
+      "alt": "Highfield Road Christmas Lights"
     },
     {
-      "src": "/images/thumbnail3.jpg",
-      "alt": "Illuminated pathway with decorations"
+      "src": "/images/uploads/5.jpeg",
+      "alt": "Highfield Road Christmas Lights"
     },
     {
-      "src": "/images/thumbnail4.jpg",
-      "alt": "Close-up of Christmas decorations and lights"
+      "src": "/images/uploads/4.jpeg",
+      "alt": "Highfield Road Christmas Lights"
+    },
+    {
+      "src": "/images/uploads/9.jpeg",
+      "alt": "Highfield Road Christmas Lights"
+    },
+    {
+      "src": "/images/uploads/7.jpeg",
+      "alt": "Highfield Road Christmas Lights"
     }
   ]
 }
