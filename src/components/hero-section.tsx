@@ -11,6 +11,29 @@ export default function HeroSection() {
   const paragraph = useFadeInOnScroll();
   const buttons = useFadeInOnScroll();
 
+  // Automatically turn any URL inside the text into a clickable link
+  function linkify(text: string) {
+    const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
+
+    return text.split(urlRegex).map((part, i) => {
+      if (urlRegex.test(part)) {
+        const url = part.startsWith("http") ? part : `https://${part}`;
+        return (
+          <a
+            key={i}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-blue-300 hover:text-blue-400"
+          >
+            {part}
+          </a>
+        );
+      }
+      return part;
+    });
+  }
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* 🧠 SEO Metadata */}
@@ -26,7 +49,10 @@ export default function HeroSection() {
           content="Visit our festive light display and support local Isle of Wight charities this Christmas season!"
         />
         <meta property="og:image" content="/images/website-logo.jpg" />
-        <meta property="og:url" content="https://highfieldroadchristmaslights.com/" />
+        <meta
+          property="og:url"
+          content="https://highfieldroadchristmaslights.com/"
+        />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -83,7 +109,7 @@ export default function HeroSection() {
               textShadow: "1px 1px 6px rgba(0,0,0,0.7)",
             }}
           >
-            {content.text}
+            {linkify(content.text)}
           </p>
         </div>
 
